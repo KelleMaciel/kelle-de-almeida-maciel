@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentação TCC: Assinatura de Walter Salles - Kelle de Almeida Maciel</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilos personalizados para complementar o Tailwind */
+    body {
+      background-color: #0b011d;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(to top, #0b011d 8%, transparent 50%), linear-gradient(to right, #0b011d 15%, transparent 70%);
+    }
+
+    .carousel {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Chrome, Safari, Opera */
+
+    /* NOVOS ESTILOS PARA OS DOTS - BASEADO NO PRINT */
+    .dots-background {
+      background-color: rgba(20, 20, 20, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px); /* Para Safari */
+      border-radius: 9999px;
+      padding: 6px 10px;
+    }
+
+    .hero-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.4s ease;
+    }
+
+    .hero-dots .dot.active {
+      background-color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .thumbnail-item:hover .thumbnail-image {
+      transform: scale(1.05);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .thumbnail-item:hover .thumbnail-title {
+      color: #ffffff;
+    }
+
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Estilo para player de áudio e toast */
+    #player-footer {
+      display: none;
+      /* Começa escondido */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #181818;
+      padding: 1rem;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #player-footer.visible {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    #player-progress-bar {
+      width: 100%;
+    }
+
+    #toast-container {
+      position: fixed;
+      bottom: 110px;
+      /* Acima do player */
+      right: 20px;
+      z-index: 101;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background-color: #2a2a2a;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      animation: toast-fade-in-out 3s ease-in-out forwards;
+    }
+
+    @keyframes toast-fade-in-out {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      15% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      85% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    .music-card {
+      cursor: pointer;
+    }
+
+    .music-card:hover .add-to-queue-btn {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
+    <div class="relative w-full max-w-4xl mx-4">
+      <button id="close-modal-btn" class="absolute -top-10 right-0 text-white text-3xl font-bold">×</button>
+      <div class="w-full" style="padding-top: 56.25%; position: relative; background-color: black; border-radius: 0.5rem;">
+        <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-lg"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <header id="main-header"
+    class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-[#0b011d] via-[#0b011d]/80 to-transparent p-4 md:px-10 flex items-center justify-between transition-colors duration-300">
+    <div class="flex items-center space-x-8">
+      <h1 class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase">
+        Assinatura de Walter
+      </h1>
+      <nav class="hidden lg:flex items-center space-x-6">
+        <a href="#inicio" class="text-white font-semibold hover:opacity-80 transition">Início</a>
+        <a href="#justificativa" class="text-gray-300 hover:text-white transition">Justificativa</a>
+        <a href="#teoria" class="text-gray-300 hover:text-white transition">Teoria</a>
+        <a href="#metodologia" class="text-gray-300 hover:text-white transition">Metodologia</a>
+        <a href="#resultados" class="text-gray-300 hover:text-white transition">Resultados</a>
+        <a href="#filmografia" class="text-gray-300 hover:text-white transition">Filmografia</a>
+        <a href="#sonoro" class="text-gray-300 hover:text-white transition">Trilha Sonora</a>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-5">
+      <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-sm">KM
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="relative h-screen min-h-[700px] max-h-[900px] w-full">
+      <div id="hero-carousel" class="relative w-full h-full overflow-hidden">
+      </div>
+      <!-- CORREÇÃO: Aumentado o z-index para garantir que os dots fiquem visíveis -->
+      <div class="dots-background absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <div id="hero-dots-container" class="flex items-center space-x-2 hero-dots">
+          <!-- Dots serão gerados aqui pelo JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CORREÇÃO: Removidas as classes de margem negativa (-mt-24, etc) e de posicionamento (relative, z-10) para evitar a sobreposição -->
+    <div class="py-8 px-4 md:px-10 space-y-20">
+
+      <section id="justificativa" class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-4">A Questão Central da Pesquisa</h2>
+        <p class="text-lg md:text-xl text-gray-200 leading-relaxed border-l-4 border-purple-400 pl-4 mb-10">
+          "De que maneira a Assinatura Walteriana no audiovisual, consolidada em obras-chave da filmografia de Walter
+          Salles, foi aprimorada e ressignificada na cinebiografia Ainda Estou Aqui (2024) para construir uma
+          experiência imersiva na identidade da protagonista, e como essa expressão artística foi interpretada nos
+          circuitos de festivais, em âmbito nacional e internacional?"
+        </p>
+
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-6">Justificativa: Um Marco do Cinema Nacional</h3>
+        <p class="text-gray-300 mb-8 max-w-4xl">
+          A escolha do filme <i>Ainda Estou Aqui</i> como objeto central desta pesquisa se deve à sua aclamação crítica
+          e institucional imediata, consolidando-se como um marco do cinema brasileiro contemporâneo. Sua relevância
+          transcende o âmbito artístico, abordando um período sensível da nossa história: a ditadura militar. A
+          trajetória de premiações do filme é uma prova contundente de seu impacto e da pertinência desta análise.
+        </p>
+        <div id="awards-container" class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        </div>
+      </section>
+
+      <section id="objetivos" class="p-8">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Objetivos da Pesquisa</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-purple-900/40 p-6 rounded-lg border border-purple-800">
+            <h3 class="font-bold text-xl mb-2 text-purple-300">Geral</h3>
+            <p class="text-gray-300">Analisar a ressignificação da assinatura audiovisual de Walter Salles em <i>Ainda
+                Estou Aqui</i> (2024) e sua validação crítica nos principais circuitos de festivais.</p>
+          </div>
+          <div id="specific-objectives-container"
+            class="md:col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          </div>
+        </div>
+      </section>
+
+      <section id="teoria">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Fundamentação Teórica</h2>
+        <div class="relative">
+          <div id="theory-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+          </div>
+        </div>
+      </section>
+
+      <section id="metodologia" class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Desenho Metodológico</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01">
+                </path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-purple-300">Natureza e Classificação</h3>
+              <p class="text-gray-300 mt-1"><b>Qualitativa e Interpretativa</b>, para capturar a complexidade do filme.
+                <b>Exploratória</b>, ao-propor o conceito de "Assinatura Walteriana", e <b>Descritiva</b>, ao mapear a
+                obra e sua recepção.
+              </p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-purple-300">Procedimentos e Corpus</h3>
+              <p class="text-gray-300 mt-1"><b>Estudo de caso</b> aprofundado de <i>Ainda Estou Aqui</i>. Corpus baseado
+                na <b>triangulação de dados</b>: fílmico (obras de Salles), textual (livro de Paiva) e discursivo
+                (críticas, entrevistas, dados da ANCINE).</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-purple-300">Instrumentos de Análise</h3>
+              <p class="text-gray-300 mt-1">Combinação da <b>Análise Textual Fílmica</b> (mise-en-scène, fotografia,
+                etc.) com a <b>Análise de Discurso Crítica (ADC)</b> de Norman Fairclough para desvelar a construção
+                interna de sentido e a externa de valor.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resultados">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Discussão dos Resultados</h2>
+        <div class="space-y-12">
+        </div>
+      </section>
+
+      <section id="filmografia">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Filmografia Relevante de Walter Salles</h2>
+        <div class="relative">
+          <div id="filmography-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+          </div>
+        </div>
+      </section>
+
+      <section id="sonoro" class="p-8 lg:p-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-8">A Trilha Sonora como Arquivo Afetivo</h2>
+        <p class="text-gray-300 mb-8 max-w-4xl">
+          A trilha sonora de <i>Ainda Estou Aqui</i> funciona como um arquivo sonoro que ancora a narrativa em seu tempo
+          histórico e emocional. Canções licenciadas atuam como artefatos de pós-memória, mediando a relação das
+          gerações com o trauma herdado. Clique em uma música para ouvir e sentir seu impacto.
+        </p>
+        
+        <div id="soundtrack-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        </div>
+      </section>
+
+      <section id="consideracoes" class="bg-gradient-to-t from-[#100224] to-transparent p-8 rounded-lg mt-12">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Considerações Finais e Caminhos
+          Futuros</h2>
+        <div class="max-w-4xl mx-auto space-y-6 text-gray-200 text-lg">
+          <p>Esta análise demonstra que <i>Ainda Estou Aqui</i> representa uma síntese e maturação na trajetória de
+            Walter Salles. Sua assinatura, antes focada na jornada geográfica, é ressignificada para uma travessia pelo
+            tempo, luto e memória, transformando o ato de registrar em um ato de resistência.</p>
+          <p>O triunfo global do filme, validado por prêmios como o Oscar, atesta a eficácia da "Assinatura Walteriana"
+            como um potente dispositivo de tradução cultural, comunicando um trauma local com uma abordagem humanista e
+            afetiva que ressoa universalmente.</p>
+          <p class="font-bold text-purple-300 pt-4 border-t border-purple-800">Para o futuro, esta pesquisa abre
+            caminhos para contrastar a "Assinatura Walteriana" com outros cineastas e aplicar a análise do "choque de
+            habitus" a outros fenômenos do cinema latino-americano, aprofundando a compreensão das dinâmicas de poder no
+            campo cinematográfico global.</p>
+          <p class="text-2xl font-bold text-center pt-8">Muito obrigado(a) pela atenção!</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="player-footer" role="region" aria-label="Reprodutor de Áudio">
+    <div class="flex items-center space-x-4">
+      <img id="player-art" src="https://placehold.co/64x64/0b011d/FFFFFF?text=♪" class="w-16 h-16 rounded-md"
+        alt="Capa da música atual">
+      <div>
+        <p id="player-title" class="font-semibold">Nenhuma música tocando</p>
+        <p id="player-artist" class="text-sm text-gray-400">--</p>
+      </div>
+    </div>
+    <div class="flex-1 flex flex-col items-center justify-center">
+      <div class="flex items-center space-x-6">
+        <button id="player-prev-btn" aria-label="Faixa Anterior"><img
+            src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/rewind.png" alt="Anterior"
+            class="w-6 h-6"></button>
+        <button id="player-play-pause-btn" class="bg-white rounded-full w-10 h-10 flex items-center justify-center"
+          aria-label="Reproduzir"><img id="player-play-pause-icon"
+            src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png" class="w-6 h-6" alt="Play"></button>
+        <button id="player-next-btn" aria-label="Próxima Faixa"><img
+            src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/fast-forward.png" alt="Próxima"
+            class="w-6 h-6"></button>
+      </div>
+      <div class="flex items-center w-full mt-2 space-x-2">
+        <span id="player-current-time" class="text-xs text-gray-400">0:00</span>
+        <input type="range" id="player-progress-bar" value="0" step="1"
+          class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+        <span id="player-duration" class="text-xs text-gray-400">0:00</span>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center justify-end space-x-4">
+      <div id="toast-container"></div>
+    </div>
+  </footer>
+
+  <audio id="audio-player" class="hidden"></audio>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // =================================================================================
+      // DADOS DA APRESENTAÇÃO (EDITÁVEIS)
+      // =================================================================================
+
+      const heroSlidesData = [
+        {
+          title: "Ainda Estou Aqui (2024)",
+          subtitle: "Trailer Oficial",
+          description: "Trailer oficial do filme 'Ainda Estou Aqui' (2024), dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=OPHs63-Z5W4&t=5s'
+        },
+        {
+          title: "Ainda Estou Aqui (2024)",
+          subtitle: "Trailer Oficial (Netflix)",
+          description: "Trailer alternativo do filme 'Ainda Estou Aqui' (2024) - Netflix.",
+          videoUrl: 'https://www.youtube.com/watch?v=SocDUuQFtyI&t=10s'
+        },
+        {
+          title: "Central do Brasil (1998)",
+          subtitle: "Trailer Oficial",
+          description: "Trailer oficial do premiado filme 'Central do Brasil' (1998).",
+          videoUrl: 'https://www.youtube.com/watch?v=deEo9xnHgNc&t=5s'
+        },
+        {
+          title: "Diários de Motocicleta (2004)",
+          subtitle: "Trailer Oficial",
+          description: "Trailer oficial do filme 'Diários de Motocicleta' (2004).",
+          videoUrl: 'https://youtu.be/0_LAiSdIXos?si=TaSF43R4DXaw1_r_&t=5s'
+        },
+        {
+          title: "Krajcberg, o Poeta dos Vestígios (1987)",
+          subtitle: "Documentário Completo",
+          description: "Documentário completo sobre o artista Frans Krajcberg, dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=yXvaM_H1_As'
+        },
+        {
+          title: "Socorro Nobre (1995)",
+          subtitle: "Documentário (menção e contexto)",
+          description: "Documentário 'Socorro Nobre' (1995), dirigido por Walter Salles.",
+          videoUrl: 'https://geo.dailymotion.com/player.html?video=x24han4'
+        },
+        {
+          title: "João & Antônio (1992)",
+          subtitle: "Documentário",
+          description: "Documentário 'João & Antônio' (1992), dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=Wj4p2aS1cL4&list=RDWj4p2aS1cL4&start_radio=1'
+        },
+        {
+          title: "Terra Estrangeira (1995)",
+          subtitle: "Longa-metragem de ficção",
+          description: "Longa-metragem 'Terra Estrangeira' (1995), dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=oYEPqNP3wA4'
+        },
+        {
+          title: "O Primeiro Dia (1998)",
+          subtitle: "Longa-metragem de ficção",
+          description: "Longa-metragem 'O Primeiro Dia' (1998), dirigido por Walter Salles e Daniela Thomas.",
+          videoUrl: 'https://www.facebook.com/CircuitoEstacaoNET/videos/o-primeiro-dia-de-walter-salles-e-daniela_thomas_-1998fim-de-ano-%C3%A9-%C3%A9poca-de-fest/3779066562155901https://www.facebook.com/watch/?v=3779066562155901'
+        },
+        {
+          title: "Abril Despedaçado (2001)",
+          subtitle: "Longa-metragem de ficção",
+          description: "Trailer do filme 'Abril Despedaçado' (2001), dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=NZyvbTb2Ryk'
+        },
+        {
+          title: "Na Estrada (2012)",
+          subtitle: "Trailer Oficial",
+          description: "Trailer oficial do filme 'Na Estrada' (2012), dirigido por Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=uUzklNReJbs'
+        },
+        {
+          title: "Jia Zhang-ke, um Homem de Fenyang (2014)",
+          subtitle: "Trecho/Entrevista com Walter Salles",
+          description: "Trecho do documentário 'Jia Zhang-ke, um Homem de Fenyang' (2014) com entrevista de Walter Salles.",
+          videoUrl: 'https://www.youtube.com/watch?v=H2Jcmq4tJuo'
+        }
+      ];
+
+      const awardsData = [
+        { name: 'Oscar', detail: 'Melhor Filme Internacional', year: 2025 },
+        { name: 'Globo de Ouro', detail: 'Melhor Atriz (F. Torres)', year: 2025 },
+        { name: 'Prêmios Platino', detail: 'Melhor Filme Ibero-Americano', year: 2025 },
+        { name: 'Festival de Veneza', detail: 'Melhor Roteiro', year: 2024 },
+      ];
+
+      const specificObjectivesData = [
+        { number: 1, text: 'Sintetizar os traços estilísticos e temáticos da Assinatura Walteriana.' },
+        { number: 2, text: 'Analisar a materialidade e a linguagem cinematográfica em <i>Ainda Estou Aqui</i>.' },
+        { number: 3, text: 'Investigar a composição da protagonista por Fernanda Torres e Montenegro.' },
+        { number: 4, text: 'Mapear a recepção crítica e o reconhecimento institucional do filme.' },
+      ];
+
+      const theoryData = [
+        { concept: 'Assinatura Walteriana', author: 'Releitura da Teoria do Autor', explanation: 'Um sistema dinâmico de recorrências temáticas e estilísticas que revela a visão do cineasta e evolui a cada obra.', image: 'https://placehold.co/300x450/4a044e/ffffff?text=Autor' },
+        { concept: 'Pós-Memória', author: 'Marianne Hirsch', explanation: 'A relação da geração seguinte com o trauma de seus antecessores, uma memória herdada e mediada por artefatos e narrativas.', image: 'https://placehold.co/300x450/064e3b/ffffff?text=Memória' },
+        { concept: 'Star-Text', author: 'Richard Dyer', explanation: 'A imagem pública de uma celebridade como um texto compósito que informa e enriquece a interpretação de suas atuações, como a escalação de mãe e filha.', image: 'https://placehold.co/300x450/7f1d1d/ffffff?text=Star-Text' },
+        { concept: 'Hors-champ & Acousmêtre', author: 'Levinas & Chion', explanation: 'A escolha ética de manter a violência fora de campo (não visual), tornando-a uma força acústica, invisível e mais poderosa.', image: 'https://placehold.co/300x450/0c4a6e/ffffff?text=Som' },
+        { concept: 'Campo e Habitus', author: 'Pierre Bourdieu', explanation: 'Análise sociológica dos festivais como campos de poder onde o filme negocia seu valor simbólico, encontrando um "choque de habitus" na crítica.', image: 'https://placehold.co/300x450/713f12/ffffff?text=Bourdieu' },
+      ];
+
+      const resultsData = [
+        { title: "A Evolução da Assinatura", description: "A análise da filmografia revela o 'ato de registrar' como fio condutor. Em <i>Ainda Estou Aqui</i>, a jornada se internaliza, trocando a estrada pelo tempo e luto. O registro vira memória, luta e resistência.", icon: 'M12 6.253v11.494m-9-5.498l9 5.498 9-5.498-9-5.498-9 5.498z' },
+        { title: "Materialização da Memória", description: "O filme traduz o trauma em linguagem audiovisual: o roteiro foca na mãe, a fotografia texturizada evoca a época, a montagem mimetiza a memória fragmentada e o som radical posiciona a violência fora de campo.", icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1a2 2 0 01-2.828 0L8 12' },
+        { title: "Repercussão e Conversão de Capital", description: "A consagração em festivais (Oscar, Globo de Ouro) converteu capital simbólico em capital social (representação na AMPAS) e econômico. Dados da ANCINE mostram correlação direta entre prêmios e aumento de bilheteria (+278% de público pós-Globo de Ouro).", icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' },
+      ];
+
+ const filmographyData = [
+        { title: 'Socorro Nobre', year: '1995', role: 'Direção', image: 'http://www.youtube.com/watch?v=xynmb-3em6A' },
+        { title: 'Central do Brasil', year: '1998', role: 'Direção', image: 'http://www.youtube.com/watch?v=8Nc9fjiej4c' },
+        { title: 'Abril Despedaçado', year: '2001', role: 'Direção', image: 'http://www.youtube.com/watch?v=OTuntR2yWno' },
+        { title: 'Diários de Motocicleta', year: '2004', role: 'Direção', image: 'http://www.youtube.com/watch?v=0_LAiSdIXos' },
+        { title: 'Na Estrada', year: '2012', role: 'Direção', image: 'http://www.youtube.com/watch?v=sAb5vODOrgg' },
+        { title: 'Jia Zhang-ke', year: '2014', role: 'Direção', image: 'http://www.youtube.com/watch?v=CmH_V586QFY' },
+        { title: 'Ainda Estou Aqui', year: '2024', role: 'Direção', image: 'http://www.youtube.com/watch?v=_NzqP0jmk3o' },
+      ];
+
+      const soundtrackData = [
+        { title: "Sonora Instrumental", artist: " Warren Ellis (2024)", art: "https://media.tenor.com/UljUycv46ewAAAAC/fernanda-torres-selton-mello.gif", src: "./assets/music/ainda-estou-aqui.mp3" },
+        { title: "Jimmy, Renda-se", artist: "Tom Zé (1970)", art: "https://www.ihu.unisinos.br/images/ihu/2024/11_gifs/10_11_ainda_estou_aqui_gif.gif", src: "./assets/music/tom-ze.mp3" },
+        { title: "É Preciso Dar Um Jeito", artist: "Erasmo Carlos (1971)", art: "https://p2.trrsf.com/image/fget/cf/500/0/filters:quality(100)/images.terra.com/2025/03/03/gravacao-de-tela-2025-03-02-as-23-56-44-vbngx7qiq1pw.gif", src: "./assets/music/erasmo-carlos.mp3" },
+        { title: "Take Me Back To Piauí", artist: "Juca Chaves (1970)", art: "https://aventurasnahistoria.com.br/media/stories/5-fatos-que-confundem-nossa-nocao-de-tempo/assets/3.gif", src: "https://www.soundjay.com/misc/sounds/wind-chime-1.mp3" },
+        { title: "Agoniza Mas Não Morre", artist: "Nelson Sargento (1978)", art: "https://images.virgula.me/2015/09/texto1.gif", src: "https://www.soundjay.com/buttons/sounds/button-1.mp3" },
+        { title: "Um Índio", artist: "Caetano Veloso (1976)", art: "https://64.media.tumblr.com/758a8910105b2949560911ef0324b4f5/41496092ab9aafdf-07/s540x810/cf39698e014ccfdad96cfe6cc06db0fadd556621.gif", src: "https://www.youtube.com/watch?v=GZFIhBfMj_4&list=RDGZFIhBfMj_4&start_radio=1" },
+        { title: "Falsa Baiana", artist: "Gal Costa (1971)", art: "https://media.tenor.com/gUb9yyyEiNEAAAAM/fernanda.gif", src: "https://www.soundjay.com/mechanical/sounds/clong-1.mp3" }
+      ];
+
+      // =================================================================================
+      // RENDERIZAÇÃO DINÂMICA DO CONTEÚDO
+      // =================================================================================
+
+      function getVideoEmbedInfo(url) {
+        // YouTube
+        const ytRegExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
+        const ytMatch = url.match(ytRegExp);
+        if (ytMatch && ytMatch[1]) {
+          const videoId = ytMatch[1];
+          return {
+            type: 'youtube',
+            background: `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
+            modal: `https://www.youtube.com/embed/${videoId}`
+          };
+        }
+        // Vimeo
+        const vimeoRegExp = /vimeo\.com\/(?:video\/)?(\d+)/i;
+        const vimeoMatch = url.match(vimeoRegExp);
+        if (vimeoMatch && vimeoMatch[1]) {
+          const vimeoId = vimeoMatch[1];
+          return {
+            type: 'vimeo',
+            background: `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
+            modal: `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`
+          };
+        }
+        // Dailymotion (exemplo)
+        const dmRegExp = /dailymotion\.com\/player\.html\?video=([a-zA-Z0-9]+)/i;
+        const dmMatch = url.match(dmRegExp);
+        if (dmMatch && dmMatch[1]) {
+          const dmId = dmMatch[1];
+          return {
+            type: 'dailymotion',
+            background: `<iframe src="https://www.dailymotion.com/embed/video/${dmId}?autoplay=1&mute=1&loop=1&background=1" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
+            modal: `https://www.dailymotion.com/embed/video/${dmId}?autoplay=1`
+          };
+        }
+        // Fallback genérico
+        return {
+          type: 'other',
+          background: `<div class="w-full h-full bg-gray-900 flex items-center justify-center text-gray-500">URL de vídeo não suportada para pré-visualização.</div>`,
+          modal: url
+        };
+      }
+
+      const heroCarousel = document.getElementById('hero-carousel');
+      heroSlidesData.forEach(slide => {
+        const embed = getVideoEmbedInfo(slide.videoUrl);
+        heroCarousel.innerHTML += `
+                <div class="hero-slide absolute w-full h-full transition-opacity duration-1000 ease-in-out opacity-0" data-modal-video-url="${embed.modal}">
+                    ${embed.background}
+                    <div class="absolute inset-0 hero-gradient"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center p-4 md:px-10 lg:w-1/2 z-10">
+                        <p class="text-lg font-semibold text-purple-300">${slide.subtitle}</p>
+                        <h2 class="text-5xl md:text-7xl font-extrabold text-white my-4 leading-tight">${slide.title}</h2>
+                        <p class="text-gray-200 mt-2 max-w-xl">${slide.description}</p>
+                        <button class="play-video-btn mt-8 bg-white/90 hover:bg-white text-black font-bold py-3 px-8 rounded-full w-fit transition">
+                            Assistir ao Trailer
+                        </button>
+                    </div>
+                </div>`;
+      });
+      
+      const awardsContainer = document.getElementById('awards-container');
+      awardsData.forEach(award => {
+        awardsContainer.innerHTML += `<div class="bg-purple-900/50 p-4 rounded-lg"><p class="text-2xl font-bold">${award.name}</p><p class="text-sm text-purple-300">${award.detail}</p><p class="text-xs text-gray-400">${award.year}</p></div>`;
+      });
+
+      const specificObjectivesContainer = document.getElementById('specific-objectives-container');
+      specificObjectivesData.forEach(obj => {
+        specificObjectivesContainer.innerHTML += `<div class="bg-gray-800/30 p-4 rounded-lg flex items-start space-x-3"><span class="text-purple-400 font-bold text-2xl">${obj.number}.</span><p class="text-gray-300">${obj.text}</p></div>`;
+      });
+
+      const theoryCarousel = document.getElementById('theory-carousel');
+      theoryData.forEach(item => {
+        theoryCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 group"><img src="${item.image}" alt="${item.concept}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><div class="mt-2"><h4 class="thumbnail-title text-gray-300 font-bold transition-colors group-hover:text-white">${item.concept}</h4><p class="text-sm text-purple-400">${item.author}</p><p class="text-xs text-gray-400 mt-1">${item.explanation}</p></div></div>`;
+      });
+
+      const resultsContainer = document.querySelector('#resultados .space-y-12');
+      resultsData.forEach(item => {
+        resultsContainer.innerHTML += `<div class="bg-black/20 p-6 rounded-lg flex flex-col md:flex-row items-center gap-6"><div class="flex-shrink-0 w-16 h-16 bg-purple-800/50 rounded-full flex items-center justify-center border-2 border-purple-700"><svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${item.icon}"></path></svg></div><div class="text-center md:text-left"><h3 class="text-2xl font-bold text-purple-300">${item.title}</h3><p class="text-gray-300 mt-2">${item.description}</p></div></div>`;
+      });
+
+      const filmographyCarousel = document.getElementById('filmography-carousel');
+      filmographyData.forEach(film => {
+        filmographyCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 group"><img src="${film.image}" alt="${film.title}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><p class="thumbnail-title mt-2 text-gray-300 font-semibold transition-colors">${film.title}</p><p class="text-sm text-gray-500">${film.year} - ${film.role}</p></div>`;
+      });
+
+  const soundtrackContainer = document.getElementById('soundtrack-container');
+      soundtrackData.forEach(track => {
+        soundtrackContainer.innerHTML += `<div class="music-card text-center group" data-title="${track.title}" data-artist="${track.artist}" data-art="${track.art}" data-src="${track.src}"><div class="relative"><img src="${track.art}" alt="Capa de ${track.title}" class="w-full aspect-square object-cover rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"><div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><img src="https://img.icons8.com/ios-glyphs/60/ffffff/play--v1.png" class="w-12 h-12" alt="Play"></div></div><h4 class="font-bold mt-2">${track.title}</h4><p class="text-sm text-gray-400">${track.artist}</p></div>`;
+      });
+
+      // =================================================================================
+      // LÓGICA DE INTERAÇÃO (CARROSSEL, MODAL, PLAYER)
+      // =================================================================================
+
+      const header = document.getElementById('main-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('bg-[#0b011d]');
+        } else {
+          header.classList.remove('bg-[#0b011d]');
+        }
+      });
+
+      const slides = document.querySelectorAll('.hero-slide');
+      const dotsContainer = document.getElementById('hero-dots-container');
+      let currentSlide = 0;
+      let slideInterval;
+
+      if (slides.length > 0) {
+        slides.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.classList.add('dot'); // Apenas a classe base, o resto é via CSS
+          dot.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
+          dot.addEventListener('click', () => { goToSlide(i); resetInterval(); });
+          dotsContainer.appendChild(dot);
+        });
+        
+        const dots = dotsContainer.querySelectorAll('.dot');
+        
+        function goToSlide(n) {
+          slides[currentSlide].classList.remove('opacity-100');
+          dots[currentSlide].classList.remove('active');
+          currentSlide = (n + slides.length) % slides.length;
+          slides[currentSlide].classList.add('opacity-100');
+          dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function startInterval() { slideInterval = setInterval(nextSlide, 7000); }
+        function resetInterval() { clearInterval(slideInterval); startInterval(); }
+        
+        goToSlide(0);
+        startInterval();
+      }
+
+      const videoModal = document.getElementById('video-modal');
+      const videoIframe = document.getElementById('video-iframe');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+
+      function openModal(videoUrl) {
+          const url = new URL(videoUrl);
+          url.searchParams.set('autoplay', '1');
+          url.searchParams.set('controls', '1');
+          url.searchParams.set('rel', '0');
+          videoIframe.src = url.toString();
+          videoModal.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+      }
+
+      function closeModal() {
+          videoIframe.src = ''; 
+          videoModal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+      }
+
+      document.querySelectorAll('.play-video-btn').forEach(btn => {
+          btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              const videoUrl = this.closest('[data-modal-video-url]').dataset.modalVideoUrl;
+              if (videoUrl) openModal(videoUrl);
+          });
+      });
+
+      closeModalBtn.addEventListener('click', closeModal);
+      videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) closeModal(); });
+
+      // --- Lógica do Player de Áudio ---
+      const state = { queue: [], currentTrackIndex: -1, isPlaying: false };
+      const DOM = {
+        audioPlayer: document.getElementById('audio-player'),
+        playerFooter: document.getElementById('player-footer'),
+        playerPlayPauseBtn: document.getElementById('player-play-pause-btn'),
+        playerPlayPauseIcon: document.getElementById('player-play-pause-icon'),
+        playerNextBtn: document.getElementById('player-next-btn'),
+        playerPrevBtn: document.getElementById('player-prev-btn'),
+        playerArt: document.getElementById('player-art'),
+        playerTitle: document.getElementById('player-title'),
+        playerArtist: document.getElementById('player-artist'),
+        playerProgressBar: document.getElementById('player-progress-bar'),
+        playerCurrentTime: document.getElementById('player-current-time'),
+        playerDuration: document.getElementById('player-duration'),
+      };
+
+      const formatTime = (seconds) => {
+        if (isNaN(seconds)) return '0:00';
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+      };
+
+      const ui = {
+        updatePlayerUI: (track) => {
+          if (!track) return;
+          DOM.playerArt.src = track.art;
+          DOM.playerTitle.textContent = track.title;
+          DOM.playerArtist.textContent = track.artist;
+          DOM.playerFooter.classList.add('visible');
+        },
+        updatePlayPauseIcon: (isPlaying) => {
+          DOM.playerPlayPauseIcon.src = isPlaying
+            ? 'https://img.icons8.com/ios-glyphs/30/000000/pause--v1.png'
+            : 'https://img.icons8.com/ios-glyphs/30/000000/play--v1.png';
+          DOM.playerPlayPauseBtn.setAttribute('aria-label', isPlaying ? 'Pausar' : 'Reproduzir');
+        },
+      };
+
+      const audioManager = {
+        loadQueue: (tracks) => { state.queue = tracks; },
+        playTrack: (index) => {
+          if (index < 0 || index >= state.queue.length) return;
+          state.currentTrackIndex = index;
+          const track = state.queue[index];
+          DOM.audioPlayer.src = track.src;
+          ui.updatePlayerUI(track);
+          DOM.audioPlayer.play().catch(err => console.error("Erro ao tocar:", err));
+        },
+        togglePlayPause: () => {
+          if (state.currentTrackIndex === -1 && state.queue.length > 0) {
+            audioManager.playTrack(0);
+            return;
+          }
+          if (DOM.audioPlayer.paused) DOM.audioPlayer.play();
+          else DOM.audioPlayer.pause();
+        },
+        nextTrack: () => { audioManager.playTrack((state.currentTrackIndex + 1) % state.queue.length); },
+        prevTrack: () => {
+          if (DOM.audioPlayer.currentTime > 3) {
+            DOM.audioPlayer.currentTime = 0;
+            return;
+          }
+          audioManager.playTrack((state.currentTrackIndex - 1 + state.queue.length) % state.queue.length);
+        },
+        updateProgress: () => {
+          const { duration, currentTime } = DOM.audioPlayer;
+          if (isNaN(duration)) return;
+          DOM.playerProgressBar.value = (currentTime / duration) * 100;
+          DOM.playerCurrentTime.textContent = formatTime(currentTime);
+        },
+      };
+
+      audioManager.loadQueue(soundtrackData);
+      document.querySelectorAll('.music-card').forEach((card, index) => card.addEventListener('click', () => audioManager.playTrack(index)));
+      DOM.playerPlayPauseBtn.addEventListener('click', audioManager.togglePlayPause);
+      DOM.playerNextBtn.addEventListener('click', audioManager.nextTrack);
+      DOM.playerPrevBtn.addEventListener('click', audioManager.prevTrack);
+      DOM.audioPlayer.addEventListener('play', () => { state.isPlaying = true; ui.updatePlayPauseIcon(true); });
+      DOM.audioPlayer.addEventListener('pause', () => { state.isPlaying = false; ui.updatePlayPauseIcon(false); });
+      DOM.audioPlayer.addEventListener('timeupdate', audioManager.updateProgress);
+      DOM.audioPlayer.addEventListener('ended', audioManager.nextTrack);
+      DOM.audioPlayer.addEventListener('loadedmetadata', () => { DOM.playerDuration.textContent = formatTime(DOM.audioPlayer.duration); });
+      DOM.playerProgressBar.addEventListener('input', (e) => {
+        if (isNaN(DOM.audioPlayer.duration)) return;
+        DOM.audioPlayer.currentTime = (e.target.value / 100) * DOM.audioPlayer.duration;
+      });
+    });
+  </script>
+</body>
+
+</html>
