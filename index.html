@@ -242,6 +242,20 @@
             max-width: 500px;
             margin: auto;
         }
+
+        /* ## ESTILOS PARA GRÁFICO DE LINHA ## */
+        #box-office-chart-container {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 0.5rem;
+        }
+
+        #box-office-chart-wrapper {
+            height: 400px;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -250,13 +264,16 @@
     <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
         <div class="relative w-full max-w-4xl mx-4">
             <button id="close-modal-btn" class="absolute -top-10 right-0 text-white text-3xl font-bold">×</button>
-            <div class="w-full" style="padding-top: 56.25%; position: relative; background-color: black; border-radius: 0.5rem;">
-                <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-lg"></iframe>
+            <div class="w-full"
+                style="padding-top: 56.25%; position: relative; background-color: black; border-radius: 0.5rem;">
+                <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-lg"></iframe>
             </div>
         </div>
     </div>
 
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-[#0b011d] via-[#0b011d]/80 to-transparent p-4 md:px-10 flex items-center justify-between transition-colors duration-300">
+    <header id="main-header"
+        class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-[#0b011d] via-[#0b011d]/80 to-transparent p-4 md:px-10 flex items-center justify-between transition-colors duration-300">
         <div class="flex items-center space-x-8">
             <h1 class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase">
                 INSTITUTO FEDERAL DE SANTA CATARINA
@@ -272,7 +289,9 @@
             </nav>
         </div>
         <div class="flex items-center space-x-5">
-            <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-sm">KM
+            <div
+                class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-sm">
+                KM
             </div>
         </div>
     </header>
@@ -294,13 +313,18 @@
                     <div class="card-scene h-96">
                         <div class="card">
                             <div class="card-face card-face-front">
-                                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 text-center">A Questão Central da Pesquisa</h2>
+                                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 text-center">A Questão
+                                    Central da Pesquisa</h2>
                             </div>
                             <div class="card-face card-face-back">
-                                <p class="text-lg md:text-xl text-gray-200 leading-relaxed border-l-4 border-purple-400 pl-4">
-                                    "De que maneira a Assinatura Walteriana no audiovisual, consolidada em obras-chave da filmografia de Walter
-                                    Salles, foi aprimorada e ressignificada na cinebiografia Ainda Estou Aqui (2024) para construir uma
-                                    experiência imersiva na identidade da protagonista, e como essa expressão artística foi interpretada nos
+                                <p
+                                    class="text-lg md:text-xl text-gray-200 leading-relaxed border-l-4 border-purple-400 pl-4">
+                                    "De que maneira a Assinatura Walteriana no audiovisual, consolidada em obras-chave
+                                    da filmografia de Walter
+                                    Salles, foi aprimorada e ressignificada na cinebiografia Ainda Estou Aqui (2024)
+                                    para construir uma
+                                    experiência imersiva na identidade da protagonista, e como essa expressão artística
+                                    foi interpretada nos
                                     circuitos de festivais, em âmbito nacional e internacional?"
                                 </p>
                             </div>
@@ -310,15 +334,20 @@
                     <div class="card-scene h-96">
                         <div class="card">
                             <div class="card-face card-face-front">
-                                <h3 class="text-3xl md:text-4xl font-extrabold text-white text-center">Justificativa: Um Marco do Cinema Nacional</h3>
+                                <h3 class="text-3xl md:text-4xl font-extrabold text-white text-center">Justificativa: Um
+                                    Marco do Cinema Nacional</h3>
                             </div>
                             <div class="card-face card-face-back">
                                 <div>
                                     <p class="text-gray-300 mb-4 text-justify bg-gray-800/30 p-4 rounded-lg">
-                                        A escolha do filme <i>Ainda Estou Aqui</i> como objeto central desta pesquisa se deve à sua aclamação crítica
-                                        e institucional imediata, consolidando-se como um marco do cinema brasileiro contemporâneo. Sua relevância
-                                        transcende o âmbito artístico, abordando um período sensível da nossa história: a ditadura militar. A
-                                        trajetória de premiações do filme é uma prova contundente de seu impacto e da pertinência desta análise.
+                                        A escolha do filme <i>Ainda Estou Aqui</i> como objeto central desta pesquisa se
+                                        deve à sua aclamação crítica
+                                        e institucional imediata, consolidando-se como um marco do cinema brasileiro
+                                        contemporâneo. Sua relevância
+                                        transcende o âmbito artístico, abordando um período sensível da nossa história:
+                                        a ditadura militar. A
+                                        trajetória de premiações do filme é uma prova contundente de seu impacto e da
+                                        pertinência desta análise.
                                     </p>
                                     <div id="awards-container" class="grid grid-cols-2 gap-4 text-center">
                                     </div>
@@ -330,7 +359,8 @@
             </section>
             <section id="objetivos" class="p-8">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2 text-center">Objetivos da Pesquisa</h2>
-                <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">Clique em uma seção do gráfico para explorar os objetivos específicos que guiaram esta análise.</p>
+                <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">Clique em uma seção do gráfico para
+                    explorar os objetivos específicos que guiaram esta análise.</p>
 
                 <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
@@ -341,11 +371,15 @@
                     <div class="space-y-6">
                         <div class="bg-purple-900/40 p-6 rounded-lg border border-purple-800">
                             <h3 class="font-bold text-xl mb-2 text-purple-300">Objetivo Geral</h3>
-                            <p class="text-gray-300">Analisar a ressignificação da assinatura audiovisual de Walter Salles em <i>Ainda Estou Aqui</i> (2024) e sua validação crítica nos principais circuitos de festivais.</p>
+                            <p class="text-gray-300">Analisar a ressignificação da assinatura audiovisual de Walter
+                                Salles em <i>Ainda Estou Aqui</i> (2024) e sua validação crítica nos principais
+                                circuitos de festivais.</p>
                         </div>
 
-                        <div id="objective-details" class="bg-gray-800/30 p-6 rounded-lg min-h-[150px] flex items-center justify-center transition-opacity duration-300">
-                            <p class="text-center text-gray-400">Selecione um objetivo específico no gráfico para ver os detalhes.</p>
+                        <div id="objective-details"
+                            class="bg-gray-800/30 p-6 rounded-lg min-h-[150px] flex items-center justify-center transition-opacity duration-300">
+                            <p class="text-center text-gray-400">Selecione um objetivo específico no gráfico para ver os
+                                detalhes.</p>
                         </div>
                     </div>
                 </div>
@@ -353,122 +387,231 @@
 
             <section id="teoria">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Fundamentação Teórica</h2>
-                <div class="relative">
-                    <div id="theory-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
-                    </div>
-                </div>
             </section>
 
             <section id="metodologia" class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Desenho Metodológico</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01">
                                 </path>
                             </svg>
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-purple-300">Natureza e Classificação</h3>
-                            <p class="text-gray-300 mt-1"><b>Qualitativa e Interpretativa</b>, para capturar a complexidade do filme.
-                                <b>Exploratória</b>, ao-propor o conceito de "Assinatura Walteriana", e <b>Descritiva</b>, ao mapear a
+                            <p class="text-gray-300 mt-1"><b>Qualitativa e Interpretativa</b>, para capturar a
+                                complexidade do filme.
+                                <b>Exploratória</b>, ao-propor o conceito de "Assinatura Walteriana", e
+                                <b>Descritiva</b>, ao mapear a
                                 obra e sua recepção.
                             </p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h7"></path>
                             </svg>
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-purple-300">Procedimentos e Corpus</h3>
-                            <p class="text-gray-300 mt-1"><b>Estudo de caso</b> aprofundado de <i>Ainda Estou Aqui</i>. Corpus baseado
-                                na <b>triangulação de dados</b>: fílmico (obras de Salles), textual (livro de Paiva) e discursivo
+                            <p class="text-gray-300 mt-1"><b>Estudo de caso</b> aprofundado de <i>Ainda Estou Aqui</i>.
+                                Corpus baseado
+                                na <b>triangulação de dados</b>: fílmico (obras de Salles), textual (livro de Paiva) e
+                                discursivo
                                 (críticas, entrevistas, dados da ANCINE).</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-purple-300">Instrumentos de Análise</h3>
-                            <p class="text-gray-300 mt-1">Combinação da <b>Análise Textual Fílmica</b> (mise-en-scène, fotografia,
-                                etc.) com a <b>Análise de Discurso Crítica (ADC)</b> de Norman Fairclough para desvelar a construção
+                            <p class="text-gray-300 mt-1">Combinação da <b>Análise Textual Fílmica</b> (mise-en-scène,
+                                fotografia,
+                                etc.) com a <b>Análise de Discurso Crítica (ADC)</b> de Norman Fairclough para desvelar
+                                a construção
                                 interna de sentido e a externa de valor.</p>
                         </div>
                     </div>
                 </div>
 
-                <div id="methodology-radar-chart-container">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Abordagens do Cinema de Memória</h3>
-                    <div id="methodology-radar-chart-wrapper">
-                        <canvas id="methodologyRadarChart"></canvas>
+                <section id="metodologia" class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Desenho Metodológico</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-purple-300">Natureza e Classificação</h3>
+                                <p class="text-gray-300 mt-1"><b>Qualitativa e Interpretativa</b>, para capturar a
+                                    complexidade do
+                                    filme.
+                                    <b>Exploratória</b>, ao-propor o conceito de "Assinatura Walteriana", e
+                                    <b>Descritiva</b>, ao mapear
+                                    a
+                                    obra e sua recepção.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h7">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-purple-300">Procedimentos e Corpus</h3>
+                                <p class="text-gray-300 mt-1"><b>Estudo de caso</b> aprofundado de <i>Ainda Estou
+                                        Aqui</i>. Corpus
+                                    baseado
+                                    na <b>triangulação de dados</b>: fílmico (obras de Salles), textual (livro de Paiva)
+                                    e discursivo
+                                    (críticas, entrevistas, dados da ANCINE).</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-purple-300">Instrumentos de Análise</h3>
+                                <p class="text-gray-300 mt-1">Combinação da <b>Análise Textual Fílmica</b>
+                                    (mise-en-scène, fotografia,
+                                    etc.) com a <b>Análise de Discurso Crítica (ADC)</b> de Norman Fairclough para
+                                    desvelar a construção
+                                    interna de sentido e a externa de valor.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div id="methodology-radar-chart-container">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Abordagens do Cinema de Memória
+                        </h3>
+                        <div id="methodology-radar-chart-wrapper">
+                            <canvas id="methodologyRadarChart"></canvas>
+                        </div>
+                    </div>
                 </section>
 
-            <section id="resultados">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Discussão dos Resultados</h2>
-                <div class="space-y-12">
-                </div>
-            </section>
+                <section id="resultados">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Discussão dos Resultados
+                    </h2>
 
-            <section id="filmografia">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Filmografia Relevante de Walter Salles</h2>
-
-                <div id="annual-production-chart-container">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Produção Anual por Função</h3>
-                    <div id="annual-production-chart-wrapper">
-                        <canvas id="annualProductionChart"></canvas>
+                    <div class="relative mb-12">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Conceitos-Chave da Análise</h3>
+                        <div id="theory-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+                        </div>
                     </div>
-                </div>
-                <div class="relative">
-                    <div id="filmography-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+
+                    <div id="box-office-chart-container">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-2 text-center">Impacto na Bilheteria Brasileira
+                        </h3>
+                        <p class="text-center text-gray-400 mb-6 max-w-3xl mx-auto">A linha do tempo ilustra o
+                            crescimento
+                            do público semanal, correlacionado com os principais prêmios recebidos.</p>
+                        <div id="box-office-chart-wrapper">
+                            <canvas id="boxOfficeChart"></canvas>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section id="sonoro" class="p-8 lg:p-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-8">A Trilha Sonora como Arquivo Afetivo</h2>
-                <p class="text-gray-300 mb-8 max-w-4xl">
-                    A trilha sonora de <i>Ainda Estou Aqui</i> funciona como um arquivo sonoro que ancora a narrativa em seu tempo
-                    histórico e emocional. Canções licenciadas atuam como artefatos de pós-memória, mediando a relação das
-                    gerações com o trauma herdado. Clique em uma música para ouvir e sentir seu impacto.
-                </p>
+                <section id="filmografia">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Filmografia Relevante de Walter
+                        Salles
+                    </h2>
 
-                <div id="soundtrack-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-                </div>
-            </section>
+                    <div id="annual-production-chart-container">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Produção Anual por Função</h3>
+                        <div id="annual-production-chart-wrapper">
+                            <canvas id="annualProductionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div id="filmography-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+                        </div>
+                    </div>
+                </section>
 
-            <section id="consideracoes" class="bg-gradient-to-t from-[#100224] to-transparent p-8 rounded-lg mt-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Considerações Finais e Caminhos
-                    Futuros</h2>
-                <div class="max-w-4xl mx-auto space-y-6 text-gray-200 text-lg">
-                    <p>Esta análise demonstra que <i>Ainda Estou Aqui</i> representa uma síntese e maturação na trajetória de
-                        Walter Salles. Sua assinatura, antes focada na jornada geográfica, é ressignificada para uma travessia pelo
-                        tempo, luto e memória, transformando o ato de registrar em um ato de resistência.</p>
-                    <p>O triunfo global do filme, validado por prêmios como o Oscar, atesta a eficácia da "Assinatura Walteriana"
-                        como um potente dispositivo de tradução cultural, comunicando um trauma local com uma abordagem humanista e
-                        afetiva que ressoa universalmente.</p>
-                    <p class="font-bold text-purple-300 pt-4 border-t border-purple-800">Para o futuro, esta pesquisa abre
-                        caminhos para contrastar a "Assinatura Walteriana" com outros cineastas e aplicar a análise do "choque de
-                        habitus" a outros fenômenos do cinema latino-americano, aprofundando a compreensão das dinâmicas de poder no
-                        campo cinematográfico global.</p>
-                    <p class="text-2xl font-bold text-center pt-8">Muito obrigado(a) pela atenção!</p>
-                </div>
-            </section>
+                <section id="sonoro" class="p-8 lg:p-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-8">A Trilha Sonora como Arquivo
+                        Afetivo</h2>
+                    <p class="text-gray-300 mb-8 max-w-4xl">
+                        A trilha sonora de <i>Ainda Estou Aqui</i> funciona como um arquivo sonoro que ancora a
+                        narrativa em
+                        seu tempo
+                        histórico e emocional. Canções licenciadas atuam como artefatos de pós-memória, mediando a
+                        relação
+                        das
+                        gerações com o trauma herdado. Clique em uma música para ouvir e sentir seu impacto.
+                    </p>
+
+                    <div id="soundtrack-container"
+                        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+                    </div>
+                </section>
+
+                <section id="consideracoes" class="bg-gradient-to-t from-[#100224] to-transparent p-8 rounded-lg mt-12">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Considerações Finais e
+                        Caminhos
+                        Futuros</h2>
+                    <div class="max-w-4xl mx-auto space-y-6 text-gray-200 text-lg">
+                        <p>Esta análise demonstra que <i>Ainda Estou Aqui</i> representa uma síntese e maturação na
+                            trajetória de
+                            Walter Salles. Sua assinatura, antes focada na jornada geográfica, é ressignificada para uma
+                            travessia pelo
+                            tempo, luto e memória, transformando o ato de registrar em um ato de resistência.</p>
+                        <p>O triunfo global do filme, validado por prêmios como o Oscar, atesta a eficácia da
+                            "Assinatura
+                            Walteriana"
+                            como um potente dispositivo de tradução cultural, comunicando um trauma local com uma
+                            abordagem
+                            humanista e
+                            afetiva que ressoa universalmente.</p>
+                        <p class="font-bold text-purple-300 pt-4 border-t border-purple-800">Para o futuro, esta
+                            pesquisa
+                            abre
+                            caminhos para contrastar a "Assinatura Walteriana" com outros cineastas e aplicar a análise
+                            do
+                            "choque de
+                            habitus" a outros fenômenos do cinema latino-americano, aprofundando a compreensão das
+                            dinâmicas
+                            de poder no
+                            campo cinematográfico global.</p>
+                        <p class="text-2xl font-bold text-center pt-8">Muito obrigado(a) pela atenção!</p>
+                    </div>
+                </section>
         </div>
     </main>
 
     <footer id="player-footer" role="region" aria-label="Reprodutor de Áudio">
         <div class="flex items-center space-x-4">
-            <img id="player-art" src="https://placehold.co/64x64/0b011d/FFFFFF?text=♪" class="w-16 h-16 rounded-md" alt="Capa da música atual">
+            <img id="player-art" src="https://placehold.co/64x64/0b011d/FFFFFF?text=♪" class="w-16 h-16 rounded-md"
+                alt="Capa da música atual">
             <div>
                 <p id="player-title" class="font-semibold">Nenhuma música tocando</p>
                 <p id="player-artist" class="text-sm text-gray-400">--</p>
@@ -476,13 +619,22 @@
         </div>
         <div class="flex-1 flex flex-col items-center justify-center">
             <div class="flex items-center space-x-6">
-                <button id="player-prev-btn" aria-label="Faixa Anterior"><img src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/rewind.png" alt="Anterior" class="w-6 h-6"></button>
-                <button id="player-play-pause-btn" class="bg-white rounded-full w-10 h-10 flex items-center justify-center" aria-label="Reproduzir"><img id="player-play-pause-icon" src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png" class="w-6 h-6" alt="Play"></button>
-                <button id="player-next-btn" aria-label="Próxima Faixa"><img src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/fast-forward.png" alt="Próxima" class="w-6 h-6"></button>
+                <button id="player-prev-btn" aria-label="Faixa Anterior"><img
+                        src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/rewind.png" alt="Anterior"
+                        class="w-6 h-6"></button>
+                <button id="player-play-pause-btn"
+                    class="bg-white rounded-full w-10 h-10 flex items-center justify-center"
+                    aria-label="Reproduzir"><img id="player-play-pause-icon"
+                        src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png" class="w-6 h-6"
+                        alt="Play"></button>
+                <button id="player-next-btn" aria-label="Próxima Faixa"><img
+                        src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/fast-forward.png" alt="Próxima"
+                        class="w-6 h-6"></button>
             </div>
             <div class="flex items-center w-full mt-2 space-x-2">
                 <span id="player-current-time" class="text-xs text-gray-400">0:00</span>
-                <input type="range" id="player-progress-bar" value="0" step="1" class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                <input type="range" id="player-progress-bar" value="0" step="1"
+                    class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer">
                 <span id="player-duration" class="text-xs text-gray-400">0:00</span>
             </div>
         </div>
@@ -494,7 +646,7 @@
     <audio id="audio-player" class="hidden"></audio>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
             // =================================================================================
             // DADOS DA APRESENTAÇÃO (EDITÁVEIS)
@@ -578,7 +730,7 @@
                 name: 'Festival de Veneza',
                 detail: 'Melhor Roteiro',
                 year: 2024
-            }, ];
+            },];
 
             const specificObjectivesData = [{
                 number: 1,
@@ -600,7 +752,7 @@
                 label: 'Analisar Recepção',
                 text: 'Mapear a recepção crítica e o reconhecimento institucional do filme em circuitos de festivais nacionais e internacionais para compreender como a obra foi validada e interpretada por diferentes culturas.',
                 value: 2.5
-            }, ];
+            },];
 
             const theoryData = [{
                 concept: 'Assinatura Walteriana',
@@ -627,21 +779,7 @@
                 author: 'Pierre Bourdieu',
                 explanation: 'Análise sociológica dos festivais como campos de poder onde o filme negocia seu valor simbólico, encontrando um "choque de habitus" na crítica.',
                 image: 'https://placehold.co/300x450/713f12/ffffff?text=Bourdieu'
-            }, ];
-
-            const resultsData = [{
-                title: "A Evolução da Assinatura",
-                description: "A análise da filmografia revela o 'ato de registrar' como fio condutor. Em <i>Ainda Estou Aqui</i>, a jornada se internaliza, trocando a estrada pelo tempo e luto. O registro vira memória, luta e resistência.",
-                icon: 'M12 6.253v11.494m-9-5.498l9 5.498 9-5.498-9-5.498-9 5.498z'
-            }, {
-                title: "Materialização da Memória",
-                description: "O filme traduz o trauma em linguagem audiovisual: o roteiro foca na mãe, a fotografia texturizada evoca a época, a montagem mimetiza a memória fragmentada e o som radical posiciona a violência fora de campo.",
-                icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l-1-1a2 2 0 01-2.828 0L8 12'
-            }, {
-                title: "Repercussão e Conversão de Capital",
-                description: "A consagração em festivais (Oscar, Globo de Ouro) converteu capital simbólico em capital social (representação na AMPAS) e econômico. Dados da ANCINE mostram correlação direta entre prêmios e aumento de bilheteria (+278% de público pós-Globo de Ouro).",
-                icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6'
-            }, ];
+            },];
 
             const filmographyData = [{
                 title: 'Socorro Nobre',
@@ -678,7 +816,7 @@
                 year: '2024',
                 role: 'Direção',
                 image: 'http://www.youtube.com/watch?v=_NzqP0jmk3o'
-            }, ];
+            },];
 
             const soundtrackData = [{
                 title: "Sonora Instrumental",
@@ -957,7 +1095,7 @@
                     year: 2025,
                     format: 'Longa-metragem de ficção',
                     notes: 'Coprodutor.'
-                }, ],
+                },],
                 writer: [{
                     title: 'Terra Estrangeira',
                     year: 1995,
@@ -1013,7 +1151,7 @@
                     year: 2025,
                     format: 'Longa-metragem de ficção',
                     notes: 'Creditado como roteirista.'
-                }, ],
+                },],
             };
 
             // ## DADOS PARA O GRÁFICO DE RADAR ##
@@ -1117,11 +1255,6 @@
                 theoryCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 group"><img src="${item.image}" alt="${item.concept}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><div class="mt-2"><h4 class="thumbnail-title text-gray-300 font-bold transition-colors group-hover:text-white">${item.concept}</h4><p class="text-sm text-purple-400">${item.author}</p><p class="text-xs text-gray-400 mt-1">${item.explanation}</p></div></div>`;
             });
 
-            const resultsContainer = document.querySelector('#resultados .space-y-12');
-            resultsData.forEach(item => {
-                resultsContainer.innerHTML += `<div class="bg-black/20 p-6 rounded-lg flex flex-col md:flex-row items-center gap-6"><div class="flex-shrink-0 w-16 h-16 bg-purple-800/50 rounded-full flex items-center justify-center border-2 border-purple-700"><svg class="w-8 h-8 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${item.icon}"></path></svg></div><div class="text-center md:text-left"><h3 class="text-2xl font-bold text-purple-300">${item.title}</h3><p class="text-gray-300 mt-2">${item.description}</p></div></div>`;
-            });
-
             const filmographyCarousel = document.getElementById('filmography-carousel');
             filmographyData.forEach(film => {
                 filmographyCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 group"><img src="${film.image}" alt="${film.title}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><p class="thumbnail-title mt-2 text-gray-300 font-semibold transition-colors">${film.title}</p><p class="text-sm text-gray-500">${film.year} - ${film.role}</p></div>`;
@@ -1220,7 +1353,7 @@
             }
 
             document.querySelectorAll('.play-video-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     e.preventDefault();
                     const videoUrl = this.closest('[data-modal-video-url]').dataset.modalVideoUrl;
                     if (videoUrl) openModal(videoUrl);
@@ -1348,7 +1481,7 @@
             // ========================================================================
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
-                card.addEventListener('click', function() {
+                card.addEventListener('click', function () {
                     card.classList.toggle('is-flipped');
                 });
             });
@@ -1449,7 +1582,8 @@
             };
 
             const allWorksFlat = Object.entries(allWorks).flatMap(([role, works]) =>
-                works.map(work => ({ ...work,
+                works.map(work => ({
+                    ...work,
                     role
                 }))
             ).sort((a, b) => a.year - b.year);
@@ -1498,7 +1632,7 @@
                     label: 'Roteirista',
                     data: years.map(year => yearlyData[year]['writer'] || 0),
                     backgroundColor: roleColors.writer
-                }, ];
+                },];
 
                 new Chart(ctx, {
                     type: 'bar',
@@ -1555,8 +1689,7 @@
             // ## FIM DA LÓGICA DO GRÁFICO DE PRODUÇÃO ANUAL ##
             // ========================================================================
 
-            // ========================================================================
-            // ## INÍCIO DA LÓGICA DO GRÁFICO DE RADAR ##
+            // =================================================                // ## INÍCIO DA LÓGICA DO GRÁFICO DE RADAR ##
             // ========================================================================
             function renderMethodologyRadarChart() {
                 const ctx = document.getElementById('methodologyRadarChart').getContext('2d');
@@ -1618,7 +1751,7 @@
                             },
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         let label = context.dataset.label || '';
                                         if (label) {
                                             label += ': ';
@@ -1639,6 +1772,89 @@
             // ========================================================================
             // ## FIM DA LÓGICA DO GRÁFICO DE RADAR ##
             // ========================================================================
+
+            // ========================================================================
+            // ## INÍCIO DA LÓGICA DO GRÁFICO DE LINHA ##
+            // ========================================================================
+            function renderBoxOfficeChart() {
+                const ctx = document.getElementById('boxOfficeChart').getContext('2d');
+                if (!ctx) return;
+
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Lançamento', 'Semana 2', 'Semana 3', 'Pós-Globo de Ouro', 'Semana 5', 'Pós-Indicação Oscar', 'Pós-Oscar'],
+                        datasets: [{
+                            label: 'Público Semanal (Aumento %)',
+                            data: [0, 15, 20, 122, 130, 245, 350],
+                            backgroundColor: 'rgba(168, 85, 247, 0.2)',
+                            borderColor: 'rgba(168, 85, 247, 1)',
+                            borderWidth: 3,
+                            pointBackgroundColor: 'rgba(168, 85, 247, 1)',
+                            pointRadius: 5,
+                            pointHoverRadius: 8,
+                            tension: 0.3,
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Aumento Percentual do Público',
+                                    font: { size: 14, family: 'Inter' },
+                                    color: '#9ca3af'
+                                },
+                                ticks: { color: '#9ca3af' },
+                                grid: { color: 'rgba(107, 33, 168, 0.2)' }
+                            },
+                            x: {
+                                ticks: { color: '#9ca3af' },
+                                grid: { color: 'rgba(107, 33, 168, 0.1)' }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed.y !== null) { label += context.parsed.y + '%'; }
+                                        let event = '';
+                                        switch (context.dataIndex) {
+                                            case 3: event = 'Vitória no Globo de Ouro'; break;
+                                            case 5: event = 'Indicação ao Oscar'; break;
+                                            case 6: event = 'Vitória no Oscar'; break;
+                                        }
+                                        return [label, event];
+                                    }
+                                },
+                                backgroundColor: '#1f2937',
+                                titleFont: { size: 14, weight: 'bold', family: 'Inter' },
+                                bodyFont: { size: 12, family: 'Inter' },
+                                padding: 10,
+                                cornerRadius: 4,
+                                displayColors: false
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index',
+                        }
+                    }
+                });
+            }
+
+            renderBoxOfficeChart();
+            // ========================================================================
+            // ## FIM DA LÓGICA DO GRÁFICO DE LINHA ##
+            // ========================================================================
+
 
         });
     </script>
