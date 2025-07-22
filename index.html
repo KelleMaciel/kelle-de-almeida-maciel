@@ -2,27 +2,31 @@
 <html lang="pt-BR" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apresentação TCC: Assinatura de Walter Salles - Kelle de Almeida Maciel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Apresentação TCC: Assinatura de Walter Salles - Kelle de Almeida Maciel
+    </title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet" />
 
     <style>
         /* Estilos personalizados para complementar o Tailwind */
         body {
             background-color: #0b011d;
             color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            font-family: "Inter", sans-serif;
         }
 
         .hero-gradient {
-            background: linear-gradient(to top, #0b011d 8%, transparent 50%), linear-gradient(to right, #0b011d 15%, transparent 70%);
+            background: linear-gradient(to top, #0b011d 8%, transparent 50%),
+                linear-gradient(to right, #0b011d 15%, transparent 70%);
         }
 
         .carousel {
@@ -30,6 +34,13 @@
             /* IE and Edge */
             scrollbar-width: none;
             /* Firefox */
+            cursor: grab;
+            /* Adiciona o cursor de "mãozinha" para indicar que é arrastável */
+        }
+
+        .carousel:active {
+            cursor: grabbing;
+            /* Muda o cursor ao arrastar */
         }
 
         .carousel::-webkit-scrollbar {
@@ -185,28 +196,56 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
             border-radius: 0.5rem;
+            overflow: hidden;
+            /* Garante que a imagem não vaze */
         }
 
         .card-face-front {
-            background-color: rgba(0, 0, 0, 0.2);
-            /* Cor da frente da carta */
+            background-color: #111827;
+            /* Um cinza escuro para o fundo da imagem */
             border: 1px solid rgba(192, 132, 252, 0.3);
+            justify-content: flex-start;
+            /* Alinha a imagem no topo */
         }
 
-        .card-face-front:hover {
-            background-color: rgba(0, 0, 0, 0.4);
+        .card-face-front img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            /* Cobre o espaço sem distorcer */
+            flex-shrink: 0;
+        }
+
+        .card-face-front .film-title {
+            width: 100%;
+            padding: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            position: absolute;
+            bottom: 0;
         }
 
         .card-face-back {
-            background-color: rgba(24, 24, 27, 0.6);
-            /* Cor do verso da carta */
-            backdrop-filter: blur(5px);
+            background-color: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(8px);
             transform: rotateY(180deg);
-            /* Gira o verso para que ele comece "de costas" */
             align-items: flex-start;
             text-align: left;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #d1d5db;
+            /* cinza claro para o texto */
+            border: 1px solid rgba(192, 132, 252, 0.5);
+        }
+
+        /* Ajuste de altura para os cards dos filmes */
+        .film-card-scene {
+            height: 380px;
+            /* Altura ajustada para poster */
         }
 
         /* ======================================================================== */
@@ -256,16 +295,75 @@
             height: 400px;
             width: 100%;
         }
+
+        /* Estilos para a seção de jornal */
+        #jornal-section {
+            background-color: #fff;
+            color: #333;
+            font-family: "Georgia", serif;
+            /* Fonte serifada para jornal */
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .newspaper-column {
+            column-count: 1;
+            /* Padrão para mobile */
+            column-gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
+            .newspaper-column {
+                column-count: 2;
+                /* 2 colunas em telas maiores */
+            }
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            /* text-4xl */
+            font-weight: 700;
+            /* font-bold */
+            margin-bottom: 1.5rem;
+            /* mb-6 */
+            text-align: center;
+        }
+
+        .content-box {
+            background-color: transparent;
+            /* Fundo transparente pois a seção já tem cor */
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            max-width: 100%;
+            width: 100%;
+            margin-top: 1rem;
+            text-align: justify;
+        }
+
+        .paragraph {
+            margin-bottom: 1rem;
+            /* mb-4 */
+            line-height: 1.6;
+        }
     </style>
 </head>
 
 <body class="overflow-x-hidden">
-
     <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden modal-overlay">
         <div class="relative w-full max-w-4xl mx-4">
-            <button id="close-modal-btn" class="absolute -top-10 right-0 text-white text-3xl font-bold">×</button>
-            <div class="w-full"
-                style="padding-top: 56.25%; position: relative; background-color: black; border-radius: 0.5rem;">
+            <button id="close-modal-btn" class="absolute -top-10 right-0 text-white text-3xl font-bold">
+                ×
+            </button>
+            <div class="w-full" style="
+            padding-top: 56.25%;
+            position: relative;
+            background-color: black;
+            border-radius: 0.5rem;
+          ">
                 <iframe id="video-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
                     allowfullscreen class="absolute top-0 left-0 w-full h-full rounded-lg"></iframe>
             </div>
@@ -275,57 +373,73 @@
     <header id="main-header"
         class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-b from-[#0b011d] via-[#0b011d]/80 to-transparent p-4 md:px-10 flex items-center justify-between transition-colors duration-300">
         <div class="flex items-center space-x-8">
-            <h1 class="text-xl md:text-2xl font-black tracking-tighter text-white uppercase">
+            <h1 class="text-xl md:text-xl font-black tracking-tighter text-white uppercase">
                 INSTITUTO FEDERAL DE SANTA CATARINA
             </h1>
             <nav class="hidden lg:flex items-center space-x-6">
-                <a href="#inicio" class="text-white font-semibold hover:opacity-80 transition">Início</a>
+                <a href="#tema" class="text-white font-semibold hover:opacity-80 transition">Tema</a>
+                <a href="#filmografia" class="text-gray-300 hover:text-white transition">Filmografia</a>
+                <a href="#justificativa" class="text-gray-300 hover:text-white transition">Questão</a>
                 <a href="#justificativa" class="text-gray-300 hover:text-white transition">Justificativa</a>
-                <a href="#teoria" class="text-gray-300 hover:text-white transition">Teoria</a>
+                <a href="#objetivos" class="text-gray-300 hover:text-white transition">Objetivos</a>
+                <a href="#teoria" class="text-gray-300 hover:text-white transition">Fundamentação</a>
                 <a href="#metodologia" class="text-gray-300 hover:text-white transition">Metodologia</a>
                 <a href="#resultados" class="text-gray-300 hover:text-white transition">Resultados</a>
-                <a href="#filmografia" class="text-gray-300 hover:text-white transition">Filmografia</a>
-                <a href="#sonoro" class="text-gray-300 hover:text-white transition">Trilha Sonora</a>
+                <a href="#consideracoes" class="text-gray-300 hover:text-white transition">Considerações</a>
             </nav>
         </div>
         <div class="flex items-center space-x-5">
-            <div
-                class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center font-bold text-white text-sm">
-                KM
-            </div>
+            <div class="w-8 h-8 rounded-full" style="
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoInXgfNNGraNRmQnnaDJjBJxnoRAmAfI54Q&s');
+            background-size: cover;
+            background-position: center;
+          "></div>
         </div>
     </header>
 
     <main>
-        <section id="inicio" class="relative h-screen min-h-[700px] max-h-[900px] w-full">
-            <div id="hero-carousel" class="relative w-full h-full overflow-hidden">
-            </div>
+        <section id="tema" class="relative h-screen min-h-[700px] max-h-[900px] w-full">
+            <div id="hero-carousel" class="relative w-full h-full overflow-hidden"></div>
             <div class="dots-background absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-                <div id="hero-dots-container" class="flex items-center space-x-2 hero-dots">
-                </div>
+                <div id="hero-dots-container" class="flex items-center space-x-2 hero-dots"></div>
             </div>
         </section>
 
         <div class="py-8 px-4 md:px-10 space-y-20">
+            <section id="filmografia">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">
+                    Filmografia Relevante de Walter Salles
+                </h2>
+
+                <div id="annual-production-chart-container">
+                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">
+                        Produção Anual por Função
+                    </h3>
+                    <div id="annual-production-chart-wrapper">
+                        <canvas id="annualProductionChart"></canvas>
+                    </div>
+                </div>
+            </section>
 
             <section id="justificativa">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="card-scene h-96">
                         <div class="card">
-                            <div class="card-face card-face-front">
-                                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 text-center">A Questão
-                                    Central da Pesquisa</h2>
+                            <div class="card-face card-face-front flex justify-center items-center">
+                                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 text-center">
+                                    A Questão Central da Pesquisa
+                                </h2>
                             </div>
                             <div class="card-face card-face-back">
                                 <p
                                     class="text-lg md:text-xl text-gray-200 leading-relaxed border-l-4 border-purple-400 pl-4">
-                                    "De que maneira a Assinatura Walteriana no audiovisual, consolidada em obras-chave
-                                    da filmografia de Walter
-                                    Salles, foi aprimorada e ressignificada na cinebiografia Ainda Estou Aqui (2024)
-                                    para construir uma
-                                    experiência imersiva na identidade da protagonista, e como essa expressão artística
-                                    foi interpretada nos
-                                    circuitos de festivais, em âmbito nacional e internacional?"
+                                    "De que maneira a Assinatura Walteriana no audiovisual,
+                                    consolidada em obras-chave da filmografia de Walter Salles,
+                                    foi aprimorada e ressignificada na cinebiografia Ainda Estou
+                                    Aqui (2024) para construir uma experiência imersiva na
+                                    identidade da protagonista, e como essa expressão artística
+                                    foi interpretada nos circuitos de festivais, em âmbito
+                                    nacional e internacional?"
                                 </p>
                             </div>
                         </div>
@@ -333,209 +447,358 @@
 
                     <div class="card-scene h-96">
                         <div class="card">
-                            <div class="card-face card-face-front">
-                                <h3 class="text-3xl md:text-4xl font-extrabold text-white text-center">Justificativa: Um
-                                    Marco do Cinema Nacional</h3>
+                            <div class="card-face card-face-front flex justify-center items-center">
+                                <h3 class="text-3xl md:text-4xl font-extrabold text-white text-center">
+                                    Justificativa: Um Marco do Cinema Nacional
+                                </h3>
                             </div>
                             <div class="card-face card-face-back">
                                 <div>
                                     <p class="text-gray-300 mb-4 text-justify bg-gray-800/30 p-4 rounded-lg">
-                                        A escolha do filme <i>Ainda Estou Aqui</i> como objeto central desta pesquisa se
-                                        deve à sua aclamação crítica
-                                        e institucional imediata, consolidando-se como um marco do cinema brasileiro
-                                        contemporâneo. Sua relevância
-                                        transcende o âmbito artístico, abordando um período sensível da nossa história:
-                                        a ditadura militar. A
-                                        trajetória de premiações do filme é uma prova contundente de seu impacto e da
-                                        pertinência desta análise.
+                                        Ainda Estou Aqui obteve notável sucesso. Isso demonstra
+                                        sua relevância histórica, cultural e tecnológica para o
+                                        cinema brasileiro contemporâneo, e sugere uma complexa
+                                        dinâmica de conversão de capital cultural em capital
+                                        econômico e simbólico. O filme representa um desafio
+                                        distinto: a construção da identidade de uma figura
+                                        histórica real.
                                     </p>
-                                    <div id="awards-container" class="grid grid-cols-2 gap-4 text-center">
-                                    </div>
+                                    <div id="awards-container" class="grid grid-cols-2 gap-4 text-center"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
             <section id="objetivos" class="p-8">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2 text-center">Objetivos da Pesquisa</h2>
-                <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">Clique em uma seção do gráfico para
-                    explorar os objetivos específicos que guiaram esta análise.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-2 text-center">
+                    Objetivos Geral e Específicos
+                </h2>
+                <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">
+                    Clique em uma seção do gráfico para explorar os objetivos
+                    específicos que guiaram esta análise.
+                </p>
 
                 <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-
-                    <div class="relative flex justify-center items-center" style="height: 400px;">
+                    <div class="relative flex justify-center items-center" style="height: 400px">
                         <canvas id="objectivesChart"></canvas>
                     </div>
 
                     <div class="space-y-6">
                         <div class="bg-purple-900/40 p-6 rounded-lg border border-purple-800">
-                            <h3 class="font-bold text-xl mb-2 text-purple-300">Objetivo Geral</h3>
-                            <p class="text-gray-300">Analisar a ressignificação da assinatura audiovisual de Walter
-                                Salles em <i>Ainda Estou Aqui</i> (2024) e sua validação crítica nos principais
-                                circuitos de festivais.</p>
+                            <p class="text-gray-300 text-xl">
+                                Analisar a ressignificação da assinatura audiovisual de Walter
+                                Salles em <i>Ainda Estou Aqui</i> (2024) e sua validação
+                                crítica nos principais circuitos de festivais.
+                            </p>
                         </div>
 
                         <div id="objective-details"
                             class="bg-gray-800/30 p-6 rounded-lg min-h-[150px] flex items-center justify-center transition-opacity duration-300">
-                            <p class="text-center text-gray-400">Selecione um objetivo específico no gráfico para ver os
-                                detalhes.</p>
+                            <p class="text-center text-gray-400">
+                                Selecione um objetivo específico no gráfico para ver os
+                                detalhes.
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
             <section id="teoria">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Fundamentação Teórica</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">
+                    Fundamentação Teórica
+                </h2>
+                <div id="theory-carousel" class="flex items-start space-x-4 overflow-x-auto carousel pb-4"></div>
             </section>
 
             <section id="metodologia" class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Desenho Metodológico</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8">
+                    Desenho Metodológico
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-20">
+
                     <div class="flex items-start space-x-4">
                         <div
                             class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M6 16h.01">
-                                </path>
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-purple-300">Natureza e Classificação</h3>
-                            <p class="text-gray-300 mt-1"><b>Qualitativa e Interpretativa</b>, para capturar a
-                                complexidade do
-                                filme.
-                                <b>Exploratória</b>, ao-propor o conceito de "Assinatura Walteriana", e
-                                <b>Descritiva</b>, ao mapear
-                                a
-                                obra e sua recepção.
+                            <h3 class="text-xl font-bold text-purple-300">
+                                Qualitativa e Interpretativa
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                A abordagem de Salles prioriza a <b>escala íntima</b> e o <b>foco na vítima</b>,
+                                utilizando o arquivo para construir a narrativa e representar o trauma.
                             </p>
                         </div>
                     </div>
+
                     <div class="flex items-start space-x-4">
                         <div
-                            class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="flex-shrink-0 w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16M4 18h7">
+                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.881 15h8.238M4.06 11a9 9 0 1115.88 0h-15.88z">
                                 </path>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-purple-300">Procedimentos e Corpus</h3>
-                            <p class="text-gray-300 mt-1"><b>Estudo de caso</b> aprofundado de <i>Ainda Estou Aqui</i>.
-                                Corpus
-                                baseado
-                                na <b>triangulação de dados</b>: fílmico (obras de Salles), textual (livro de Paiva) e
-                                discursivo
-                                (críticas, entrevistas, dados da ANCINE).</p>
+                            <h3 class="text-xl font-bold text-yellow-300">
+                                Exploratória e Descritiva
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                Guzmán utiliza a <b>paisagem como um palimpsesto</b> onde se inscrevem memórias cósmicas
+                                e tragédias humanas em uma <b>escala geológica e expansiva</b>.
+                            </p>
                         </div>
                     </div>
+
                     <div class="flex items-start space-x-4">
                         <div
-                            class="flex-shrink-0 w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            class="flex-shrink-0 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z">
+                                </path>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-purple-300">Instrumentos de Análise</h3>
-                            <p class="text-gray-300 mt-1">Combinação da <b>Análise Textual Fílmica</b> (mise-en-scène,
-                                fotografia,
-                                etc.) com a <b>Análise de Discurso Crítica (ADC)</b> de Norman Fairclough para desvelar
-                                a construção
-                                interna de sentido e a externa de valor.</p>
+                            <h3 class="text-xl font-bold text-emerald-300">
+                                Análise Fílmica
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                Panh enfrenta um vácuo de imagens, criando a <b>"imagem que falta"</b> com miniaturas de
+                                argila em um uso <b>construtivo e não documental</b> do arquivo.
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                <div id="methodology-radar-chart-container">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Abordagens do Cinema de Memória</h3>
-                    <div id="methodology-radar-chart-wrapper">
-                        <canvas id="methodologyRadarChart"></canvas>
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-emerald-300">
+                                Análise Textual
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                Onde Salles parte de um excesso de arquivo, Panh <b>constrói a partir do zero</b>,
+                                revelando uma relação distinta com a <b>verdade histórica e a memória</b>.
+                            </p>
+                        </div>
                     </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2V4a2 2 0 012-2h8zM7 8H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l4-4h2a2 2 0 002-2V4a2 2 0 00-2-2H9l-4 4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-emerald-300">
+                                Corpus de Discurso
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                A análise foca em como a linguagem e a narrativa constroem e disputam memórias,
+                                revelando <b>tensões entre o discurso oficial e as vozes silenciadas</b>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-300">
+                                Triangulação dos Dados
+                            </h3>
+                            <p class="text-gray-300 mt-1">
+                                Oppenheimer <b>foca no perpetrador</b> através do <b>confronto direto</b>, convidando-os
+                                a reencenar seus crimes para expor a banalidade do mal.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
             <section id="resultados">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Discussão dos Resultados
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">
+                    Discussão dos Resultados
                 </h2>
-
+                <section class="bg-black/20 backdrop-blur-sm p-8 rounded-lg">
+                    <div id="methodology-interactive-container" class="mt-12 p-8 rounded-lg" style="
+                background-color: rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(192, 132, 252, 0.3);
+              ">
+                        <h3 class="text-2xl font-bold text-purple-300 mb-6 text-center">
+                            Diálogos Globais: Abordagens do Cinema de Memória
+                        </h3>
+                        <div class="flex flex-col lg:flex-row gap-8 items-start">
+                            <div class="w-full lg:w-1/3">
+                                <div id="director-cards-container" class="grid grid-cols-2 gap-4"></div>
+                            </div>
+                            <div class="w-full lg:w-2/3 flex flex-col items-center">
+                                <div id="methodology-radar-chart-wrapper" style="
+                      height: 400px;
+                      width: 100%;
+                      max-width: 500px;
+                      margin: auto;
+                    ">
+                                    <canvas id="methodologyRadarChart"></canvas>
+                                </div>
+                                <div id="director-analysis-container"
+                                    class="mt-6 p-6 bg-purple-900/20 rounded-lg border border-purple-800 w-full min-h-[150px]">
+                                    <h4 id="director-analysis-title" class="font-bold text-xl mb-2 text-purple-300">
+                                    </h4>
+                                    <p id="director-analysis-text" class="text-gray-300 leading-relaxed"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div class="relative mb-12">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Conceitos-Chave da Análise</h3>
-                    <div id="theory-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
+                    <h3 class="text-2xl font-bold text-purple-300 mb-2 text-center">
+                        Corpus Fílmico: Genealogia da Assinatura
+                    </h3>
+                    <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">
+                        O corpus fílmico foi organizado em blocos temáticos que permitem
+                        mapear a evolução da "Assinatura Walteriana". Clique em um filme
+                        para ver detalhes.
+                    </p>
+                    <div id="film-corpus-container" class="flex items-start space-x-6 overflow-x-auto carousel pb-4">
                     </div>
                 </div>
 
-                <div id="box-office-chart-container">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-2 text-center">Impacto na Bilheteria Brasileira
+                <div class="relative mb-12">
+                    <h3 class="text-2xl font-bold text-purple-300 mb-2 text-center">
+                        Impacto na Bilheteria Brasileira
                     </h3>
-                    <p class="text-center text-gray-400 mb-6 max-w-3xl mx-auto">A linha do tempo ilustra o crescimento
-                        do público semanal, correlacionado com os principais prêmios recebidos.</p>
+                    <p class="text-center text-gray-400 mb-6 max-w-3xl mx-auto">
+                        A linha do tempo ilustra o crescimento do público semanal,
+                        correlacionado com os principais prêmios recebidos.
+                    </p>
                     <div id="box-office-chart-wrapper">
                         <canvas id="boxOfficeChart"></canvas>
                     </div>
                 </div>
             </section>
-
-            <section id="filmografia">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Filmografia Relevante de Walter Salles
-                </h2>
-
-                <div id="annual-production-chart-container">
-                    <h3 class="text-2xl font-bold text-purple-300 mb-4 text-center">Produção Anual por Função</h3>
-                    <div id="annual-production-chart-wrapper">
-                        <canvas id="annualProductionChart"></canvas>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div id="filmography-carousel" class="flex space-x-4 overflow-x-auto carousel pb-4">
-                    </div>
-                </div>
-            </section>
-
             <section id="sonoro" class="p-8 lg:p-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-8">A Trilha Sonora como Arquivo
-                    Afetivo</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-purple-300 mb-8">
+                    A Trilha Sonora como Arquivo Afetivo
+                </h2>
                 <p class="text-gray-300 mb-8 max-w-4xl">
-                    A trilha sonora de <i>Ainda Estou Aqui</i> funciona como um arquivo sonoro que ancora a narrativa em
-                    seu tempo
-                    histórico e emocional. Canções licenciadas atuam como artefatos de pós-memória, mediando a relação
-                    das
-                    gerações com o trauma herdado. Clique em uma música para ouvir e sentir seu impacto.
+                    A trilha sonora de <i>Ainda Estou Aqui</i> funciona como um arquivo
+                    sonoro que ancora a narrativa em seu tempo histórico e emocional.
+                    Canções licenciadas atuam como artefatos de pós-memória, mediando a
+                    relação das gerações com o trauma herdado. Clique em uma música para
+                    ouvir e sentir seu impacto.
                 </p>
 
                 <div class="relative">
-                    <div id="soundtrack-container" class="flex space-x-4 overflow-x-auto carousel pb-4">
+                    <div id="soundtrack-container" class="flex space-x-4 overflow-x-auto carousel pb-4"></div>
+                </div>
+            </section>
+
+            <section id="jornal" class="bg-white rounded-lg p-8 my-12">
+                <h2 class="section-title text-gray-800">
+                    A Orquestração do Discurso Criativo
+                </h2>
+                <div class="content-box">
+                    <div class="newspaper-column text-gray-800">
+                        <p class="py-2">"Ainda Estou Aqui" recebeu ampla aclamação da crítica, particularmente de
+                            veículos anglo-americanos, que o elogiaram como "clássico na forma, mas radical na empatia"
+                            e destacaram a atuação "soberba" de Fernanda Torres. </p>
+                        <p class="py-2">O "habitus" (conjunto de disposições) desses críticos tende a priorizar o drama
+                            individual, a imersão emocional e a empatia universal. Em contraste, um notável "dissenso
+                            significativo" emergiu de certos críticos europeus e brasileiros. Alguns consideraram a
+                            atuação de Torres "passavelmente monótona" e argumentaram que a "concentração melodramática"
+                            do filme em Eunice "suaviza a análise do mecanismo totalitário", tornando-o politicamente
+                            superficial. Esse "choque de habitus" revela uma tensão ideológica fundamental dentro do
+                            campo cinematográfico global em relação à representação do trauma político.</p>
+                        <p class="py-2">O sucesso do filme no circuito de premiações dominado por Hollywood sugere que a
+                            abordagem humanista de Salles se alinha eficazmente com o habitus desse campo, facilitando
+                            sua recepção e reconhecimento.
+                        </p>
+                        <p class="py-2">A mídia brasileira, particularmente o Grupo Globo, desempenhou um papel crucial
+                            na amplificação do sucesso do filme. Veículos como o G1 e o Fantástico destacaram a vitória
+                            de Fernanda Torres no Globo de Ouro como um marco inédito e o Oscar do filme como um feito
+                            histórico para o cinema nacional. A NSC Total, por sua vez, enfatizou como a vitória do
+                            Oscar trouxe visibilidade e "abriu portas para novas oportunidades" para o cinema
+                            brasileiro, citando a nomeação do Brasil como País de Honra no Marché du Film de Cannes em
+                            2025</p>
+
+                        <p class="py-2">A viabilidade comercial do filme também foi sustentada por uma sofisticada
+                            estratégia de distribuição. A parceria entre produtoras tradicionais e uma grande plataforma
+                            de streaming (Globoplay) como coprodutora e detentora dos direitos de streaming doméstico
+                            foi crucial. Esse modelo híbrido garantiu um apoio financeiro e um amplo alcance
+                            pós-lançamento teatral.</p>
+                        <p class="py-2">A Sony Pictures Releasing cuidou da distribuição nacional, enquanto a Sony
+                            Pictures Classics adquiriu os direitos internacionais, lançando estrategicamente o filme nos
+                            EUA para qualificação ao Oscar. A aquisição antecipada, mesmo antes da pós-produção, indica
+                            forte confiança no potencial de premiação do filme.</p>
+                        <p class="py-2"> A campanha "For Your Consideration" e a expansão estratégica das exibições nos
+                            EUA foram esforços deliberados para influenciar os votantes da Academia. O sucesso do filme
+                            é um testemunho da eficácia de uma estratégia de distribuição e marketing bem executada e
+                            multiplataforma.
+                        </p>
+
                     </div>
                 </div>
             </section>
 
             <section id="consideracoes" class="bg-gradient-to-t from-[#100224] to-transparent p-8 rounded-lg mt-12">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">Considerações Finais e
-                    Caminhos
-                    Futuros</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-8 text-center">
+                    Considerações Finais e Caminhos Futuros
+                </h2>
                 <div class="max-w-4xl mx-auto space-y-6 text-gray-200 text-lg">
-                    <p>Esta análise demonstra que <i>Ainda Estou Aqui</i> representa uma síntese e maturação na
-                        trajetória de
-                        Walter Salles. Sua assinatura, antes focada na jornada geográfica, é ressignificada para uma
-                        travessia pelo
-                        tempo, luto e memória, transformando o ato de registrar em um ato de resistência.</p>
-                    <p>O triunfo global do filme, validado por prêmios como o Oscar, atesta a eficácia da "Assinatura
-                        Walteriana"
-                        como um potente dispositivo de tradução cultural, comunicando um trauma local com uma abordagem
-                        humanista e
-                        afetiva que ressoa universalmente.</p>
-                    <p class="font-bold text-purple-300 pt-4 border-t border-purple-800">Para o futuro, esta pesquisa
-                        abre
-                        caminhos para contrastar a "Assinatura Walteriana" com outros cineastas e aplicar a análise do
-                        "choque de
-                        habitus" a outros fenômenos do cinema latino-americano, aprofundando a compreensão das dinâmicas
-                        de poder no
-                        campo cinematográfico global.</p>
-                    <p class="text-2xl font-bold text-center pt-8">Muito obrigado(a) pela atenção!</p>
+                    <p>
+                        Esta análise demonstra que <i>Ainda Estou Aqui</i> representa uma
+                        síntese e maturação na trajetória de Walter Salles. Sua
+                        assinatura, antes focada na jornada geográfica, é ressignificada
+                        para uma travessia pelo tempo, luto e memória, transformando o ato
+                        de registrar em um ato de resistência.
+                    </p>
+                    <p>
+                        O triunfo global do filme, validado por prêmios como o Oscar,
+                        atesta a eficácia da "Assinatura Walteriana" como um potente
+                        dispositivo de tradução cultural, comunicando um trauma local com
+                        uma abordagem humanista e afetiva que ressoa universalmente.
+                    </p>
+                    <p class="font-bold text-purple-300 pt-4 border-t border-purple-800">
+                        Para o futuro, esta pesquisa abre caminhos para contrastar a
+                        "Assinatura Walteriana" com outros cineastas e aplicar a análise
+                        do "choque de habitus" a outros fenômenos do cinema
+                        latino-americano, aprofundando a compreensão das dinâmicas de
+                        poder no campo cinematográfico global.
+                    </p>
+                    <p class="text-2xl font-bold text-center pt-8">
+                        Muito obrigado(a) pela atenção!
+                    </p>
                 </div>
             </section>
         </div>
@@ -544,7 +807,7 @@
     <footer id="player-footer" role="region" aria-label="Reprodutor de Áudio">
         <div class="flex items-center space-x-4">
             <img id="player-art" src="https://placehold.co/64x64/0b011d/FFFFFF?text=♪" class="w-16 h-16 rounded-md"
-                alt="Capa da música atual">
+                alt="Capa da música atual" />
             <div>
                 <p id="player-title" class="font-semibold">Nenhuma música tocando</p>
                 <p id="player-artist" class="text-sm text-gray-400">--</p>
@@ -552,22 +815,24 @@
         </div>
         <div class="flex-1 flex flex-col items-center justify-center">
             <div class="flex items-center space-x-6">
-                <button id="player-prev-btn" aria-label="Faixa Anterior"><img
-                        src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/rewind.png" alt="Anterior"
-                        class="w-6 h-6"></button>
+                <button id="player-prev-btn" aria-label="Faixa Anterior">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/rewind.png" alt="Anterior"
+                        class="w-6 h-6" />
+                </button>
                 <button id="player-play-pause-btn"
-                    class="bg-white rounded-full w-10 h-10 flex items-center justify-center"
-                    aria-label="Reproduzir"><img id="player-play-pause-icon"
-                        src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png" class="w-6 h-6"
-                        alt="Play"></button>
-                <button id="player-next-btn" aria-label="Próxima Faixa"><img
-                        src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/fast-forward.png" alt="Próxima"
-                        class="w-6 h-6"></button>
+                    class="bg-white rounded-full w-10 h-10 flex items-center justify-center" aria-label="Reproduzir">
+                    <img id="player-play-pause-icon" src="https://img.icons8.com/ios-glyphs/30/000000/play--v1.png"
+                        class="w-6 h-6" alt="Play" />
+                </button>
+                <button id="player-next-btn" aria-label="Próxima Faixa">
+                    <img src="https://img.icons8.com/fluency-systems-filled/48/a3a3a3/fast-forward.png" alt="Próxima"
+                        class="w-6 h-6" />
+                </button>
             </div>
             <div class="flex items-center w-full mt-2 space-x-2">
                 <span id="player-current-time" class="text-xs text-gray-400">0:00</span>
                 <input type="range" id="player-progress-bar" value="0" step="1"
-                    class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    class="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer" />
                 <span id="player-duration" class="text-xs text-gray-400">0:00</span>
             </div>
         </div>
@@ -579,563 +844,926 @@
     <audio id="audio-player" class="hidden"></audio>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
+        document.addEventListener("DOMContentLoaded", function () {
+            let interactiveRadarChart;
             // =================================================================================
             // DADOS DA APRESENTAÇÃO (EDITÁVEIS)
             // =================================================================================
 
-            const heroSlidesData = [{
-                title: "Ainda Estou Aqui (2024)",
-                subtitle: "Trailer Oficial",
-                description: "Trailer oficial do filme 'Ainda Estou Aqui' (2024), dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=OPHs63-Z5W4&t=5s'
-            }, {
-                title: "Ainda Estou Aqui (2024)",
-                subtitle: "Trailer Oficial (Netflix)",
-                description: "Trailer alternativo do filme 'Ainda Estou Aqui' (2024) - Netflix.",
-                videoUrl: 'https://www.youtube.com/watch?v=SocDUuQFtyI&t=10s'
-            }, {
-                title: "Central do Brasil (1998)",
-                subtitle: "Trailer Oficial",
-                description: "Trailer oficial do premiado filme 'Central do Brasil' (1998).",
-                videoUrl: 'https://www.youtube.com/watch?v=deEo9xnHgNc&t=5s'
-            }, {
-                title: "Diários de Motocicleta (2004)",
-                subtitle: "Trailer Oficial",
-                description: "Trailer oficial do filme 'Diários de Motocicleta' (2004).",
-                videoUrl: 'https://youtu.be/0_LAiSdIXos?si=TaSF43R4DXaw1_r_&t=5s'
-            }, {
-                title: "Krajcberg, o Poeta dos Vestígios (1987)",
-                subtitle: "Documentário Completo",
-                description: "Documentário completo sobre o artista Frans Krajcberg, dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=yXvaM_H1_As'
-            }, {
-                title: "Socorro Nobre (1995)",
-                subtitle: "Documentário (menção e contexto)",
-                description: "Documentário 'Socorro Nobre' (1995), dirigido por Walter Salles.",
-                videoUrl: 'https://geo.dailymotion.com/player.html?video=x24han4'
-            }, {
-                title: "João & Antônio (1992)",
-                subtitle: "Documentário",
-                description: "Documentário 'João & Antônio' (1992), dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=Wj4p2aS1cL4&list=RDWj4p2aS1cL4&start_radio=1'
-            }, {
-                title: "Terra Estrangeira (1995)",
-                subtitle: "Longa-metragem de ficção",
-                description: "Longa-metragem 'Terra Estrangeira' (1995), dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=oYEPqNP3wA4'
-            }, {
-                title: "O Primeiro Dia (1998)",
-                subtitle: "Longa-metragem de ficção",
-                description: "Longa-metragem 'O Primeiro Dia' (1998), dirigido por Walter Salles e Daniela Thomas.",
-                videoUrl: 'https://www.facebook.com/CircuitoEstacaoNET/videos/o-primeiro-dia-de-walter-salles-e-daniela_thomas_-1998fim-de-ano-%C3%A9-%C3%A9poca-de-fest/3779066562155901https://www.facebook.com/watch/?v=3779066562155901'
-            }, {
-                title: "Abril Despedaçado (2001)",
-                subtitle: "Longa-metragem de ficção",
-                description: "Trailer do filme 'Abril Despedaçado' (2001), dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=NZyvbTb2Ryk'
-            }, {
-                title: "Na Estrada (2012)",
-                subtitle: "Trailer Oficial",
-                description: "Trailer oficial do filme 'Na Estrada' (2012), dirigido por Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=uUzklNReJbs'
-            }, {
-                title: "Jia Zhang-ke, um Homem de Fenyang (2014)",
-                subtitle: "Trecho/Entrevista com Walter Salles",
-                description: "Trecho do documentário 'Jia Zhang-ke, um Homem de Fenyang' (2014) com entrevista de Walter Salles.",
-                videoUrl: 'https://www.youtube.com/watch?v=H2Jcmq4tJuo'
-            }];
+            const heroSlidesData = [
+                {
+                    title: "Ainda Estou Aqui (2024)",
+                    subtitle: "Trailer Oficial",
+                    description:
+                        "Trailer oficial do filme 'Ainda Estou Aqui' (2024), dirigido por Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=OPHs63-Z5W4&t=5s",
+                },
+                {
+                    title: "Ainda Estou Aqui (2024)",
+                    subtitle: "Trailer Oficial (Netflix)",
+                    description:
+                        "Trailer alternativo do filme 'Ainda Estou Aqui' (2024) - Netflix.",
+                    videoUrl: "https://www.youtube.com/watch?v=SocDUuQFtyI&t=10s",
+                },
+                {
+                    title: "Central do Brasil (1998)",
+                    subtitle: "Trailer Oficial",
+                    description:
+                        "Trailer oficial do premiado filme 'Central do Brasil' (1998).",
+                    videoUrl: "https://www.youtube.com/watch?v=deEo9xnHgNc&t=5s",
+                },
+                {
+                    title: "Diários de Motocicleta (2004)",
+                    subtitle: "Trailer Oficial",
+                    description:
+                        "Trailer oficial do filme 'Diários de Motocicleta' (2004).",
+                    videoUrl: "https://youtu.be/0_LAiSdIXos?si=TaSF43R4DXaw1_r_&t=5s",
+                },
+                {
+                    title: "Krajcberg, o Poeta dos Vestígios (1987)",
+                    subtitle: "Documentário Completo",
+                    description:
+                        "Documentário completo sobre o artista Frans Krajcberg, dirigido por Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=yXvaM_H1_As",
+                },
+                {
+                    title: "Socorro Nobre (1995)",
+                    subtitle: "Documentário (menção e contexto)",
+                    description:
+                        "Documentário 'Socorro Nobre' (1995), dirigido por Walter Salles.",
+                    videoUrl: "https://geo.dailymotion.com/player.html?video=x24han4",
+                },
+                {
+                    title: "João & Antônio (1992)",
+                    subtitle: "Documentário",
+                    description:
+                        "Documentário 'João & Antônio' (1992), dirigido por Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=fZJUKixyeXM&t=1s",
+                },
+                {
+                    title: "Abril Despedaçado (2001)",
+                    subtitle: "Longa-metragem de ficção",
+                    description:
+                        "Trailer do filme 'Abril Despedaçado' (2001), dirigido por Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=NZyvbTb2Ryk",
+                },
+                {
+                    title: "Na Estrada (2012)",
+                    subtitle: "Trailer Oficial",
+                    description:
+                        "Trailer oficial do filme 'Na Estrada' (2012), dirigido por Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=uUzklNReJbs",
+                },
+                {
+                    title: "Jia Zhang-ke, um Homem de Fenyang (2014)",
+                    subtitle: "Trecho/Entrevista com Walter Salles",
+                    description:
+                        "Trecho do documentário 'Jia Zhang-ke, um Homem de Fenyang' (2014) com entrevista de Walter Salles.",
+                    videoUrl: "https://www.youtube.com/watch?v=H2Jcmq4tJuo",
+                },
+            ];
 
-            const awardsData = [{
-                name: 'Oscar',
-                detail: 'Melhor Filme Internacional',
-                year: 2025
-            }, {
-                name: 'Globo de Ouro',
-                detail: 'Melhor Atriz (F. Torres)',
-                year: 2025
-            }, {
-                name: 'Prêmios Platino',
-                detail: 'Melhor Filme Ibero-Americano',
-                year: 2025
-            }, {
-                name: 'Festival de Veneza',
-                detail: 'Melhor Roteiro',
-                year: 2024
-            },];
+            const awardsData = [
+                {
+                    name: "Oscar",
+                    detail: "Melhor Filme Internacional",
+                    year: 2025,
+                },
+                {
+                    name: "Globo de Ouro",
+                    detail: "Melhor Atriz (F. Torres)",
+                    year: 2025,
+                },
+                {
+                    name: "Prêmios Platino",
+                    detail: "Melhor Filme Ibero-Americano",
+                    year: 2025,
+                },
+                {
+                    name: "Festival de Veneza",
+                    detail: "Melhor Roteiro",
+                    year: 2024,
+                },
+            ];
 
-            const specificObjectivesData = [{
-                number: 1,
-                label: 'Analisar Assinatura',
-                text: 'Sintetizar os traços estilísticos e temáticos que constituem a "Assinatura Walteriana", investigando como seu método de storytelling documental evoluiu ao longo de sua filmografia.',
-                value: 4
-            }, {
-                number: 2,
-                label: 'Analisar Linguagem',
-                text: 'Analisar a materialidade e a linguagem cinematográfica de <i>Ainda Estou Aqui</i>, com foco na fotografia, montagem e design de som como construtores da experiência imersiva na memória da protagonista.',
-                value: 3.5
-            }, {
-                number: 3,
-                label: 'Analisar Atuação',
-                text: 'Investigar a composição da protagonista Eunice Paiva, considerando a contribuição do "star-text" de Fernanda Torres e Fernanda Montenegro para a profundidade e a recepção da personagem.',
-                value: 3
-            }, {
-                number: 4,
-                label: 'Analisar Recepção',
-                text: 'Mapear a recepção crítica e o reconhecimento institucional do filme em circuitos de festivais nacionais e internacionais para compreender como a obra foi validada e interpretada por diferentes culturas.',
-                value: 2.5
-            },];
+            const specificObjectivesData = [
+                {
+                    number: 1,
+                    label: "Traços na Assinatura",
+                    text: 'Sintetizar os traços estilísticos e temáticos que constituem a "Assinatura Walteriana", investigando como seu método de storytelling documental evoluiu ao longo de sua filmografia.',
+                    value: 4,
+                },
+                {
+                    number: 2,
+                    label: "Escolhas cinematográficas",
+                    text: "Analisar a materialidade e a linguagem cinematográfica de <i>Ainda Estou Aqui</i>, com foco na fotografia, montagem e design de som como construtores da experiência imersiva da protagonista.",
+                    value: 3.5,
+                },
+                {
+                    number: 3,
+                    label: "Atuação das Fernandas",
+                    text: 'Investigar como Fernanda Torres e Fernanda Montenegro compuseram a identidade da protagonista, Eunice Paiva, considerando a contribuição do "star-text" para a profundidade e a recepção da personagem.',
+                    value: 3,
+                },
+                {
+                    number: 4,
+                    label: "Analise de Discurso",
+                    text: "Analisar o discurso dos realizadores e instituições",
+                    value: 2.5, // Adjusted value for visual balance
+                },
+                {
+                    number: 5,
+                    label: "Mapear Recepção",
+                    text: "Mapear a recepção crítica e o reconhecimento institucional do filme em circuitos de festivais nacionais e internacionais para compreender como a obra foi validada e interpretada por diferentes culturas.",
+                    value: 4,
+                },
+            ];
 
-            const theoryData = [{
-                concept: 'Assinatura Walteriana',
-                author: 'Releitura da Teoria do Autor',
-                explanation: 'Um sistema dinâmico de recorrências temáticas e estilísticas que revela a visão do cineasta e evolui a cada obra.',
-                image: 'https://placehold.co/300x450/4a044e/ffffff?text=Autor'
-            }, {
-                concept: 'Pós-Memória',
-                author: 'Marianne Hirsch',
-                explanation: 'A relação da geração seguinte com o trauma de seus antecessores, uma memória herdada e mediada por artefatos e narrativas.',
-                image: 'https://placehold.co/300x450/064e3b/ffffff?text=Memória'
-            }, {
-                concept: 'Star-Text',
-                author: 'Richard Dyer',
-                explanation: 'A imagem pública de uma celebridade como um texto compósito que informa e enriquece a interpretação de suas atuações, como a escalação de mãe e filha.',
-                image: 'https://placehold.co/300x450/7f1d1d/ffffff?text=Star-Text'
-            }, {
-                concept: 'Hors-champ & Acousmêtre',
-                author: 'Levinas & Chion',
-                explanation: 'A escolha ética de manter a violência fora de campo (não visual), tornando-a uma força acústica, invisível e mais poderosa.',
-                image: 'https://placehold.co/300x450/0c4a6e/ffffff?text=Som'
-            }, {
-                concept: 'Campo e Habitus',
-                author: 'Pierre Bourdieu',
-                explanation: 'Análise sociológica dos festivais como campos de poder onde o filme negocia seu valor simbólico, encontrando um "choque de habitus" na crítica.',
-                image: 'https://placehold.co/300x450/713f12/ffffff?text=Bourdieu'
-            },];
+            const theoryData = [
+                {
+                    concept: "Assinatura Walteriana",
+                    mainWord: "Autor",
+                    author: "Releitura da Teoria do Autor",
+                    explanation:
+                        "Um sistema dinâmico de recorrências temáticas e estilísticas que revela a visão do cineasta e evolui a cada obra.",
+                    color: "bg-purple-800",
+                },
+                {
+                    concept: "Pós-Memória",
+                    mainWord: "Memória",
+                    author: "Marianne Hirsch",
+                    explanation:
+                        "A relação da geração seguinte com o trauma de seus antecessores, uma memória herdada e mediada por artefatos e narrativas.",
+                    color: "bg-green-800",
+                },
+                {
+                    concept: "Star-Text",
+                    mainWord: "Star-Text",
+                    author: "Richard Dyer",
+                    explanation:
+                        "A imagem pública de uma celebridade como um texto compósito que informa e enriquece a interpretação de suas atuações, como a escalação de mãe e filha.",
+                    color: "bg-red-800",
+                },
+                {
+                    concept: "Hors-Champ",
+                    mainWord: "Acousmêtre",
+                    author: "Levinas & Chion",
+                    explanation:
+                        "A escolha ética de manter a violência fora de campo (não visual), tornando-a uma força acústica, invisível e mais poderosa.",
+                    color: "bg-blue-800",
+                },
+                {
+                    concept: "Teoria dos Campos",
+                    mainWord: "Simbólico",
+                    author: "Pierre Bourdieu",
+                    explanation:
+                        'Análise sociológica dos festivais como campos de poder onde o filme negocia seu valor simbólico, encontrando um "choque de habitus" na crítica.',
+                    color: "bg-yellow-800",
+                },
+                {
+                    concept: "Transporte Narrativo",
+                    mainWord: "Imersão",
+                    author: "Green & Brock, Aumont, Sobchack",
+                    explanation:
+                        "Conexão emocional e visceral com a narrativa, engajando o espectador de forma profunda.",
+                    color: "bg-indigo-800",
+                },
+            ];
 
-            const filmographyData = [{
-                title: 'Socorro Nobre',
-                year: '1995',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=xynmb-3em6A'
-            }, {
-                title: 'Central do Brasil',
-                year: '1998',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=8Nc9fjiej4c'
-            }, {
-                title: 'Abril Despedaçado',
-                year: '2001',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=OTuntR2yWno'
-            }, {
-                title: 'Diários de Motocicleta',
-                year: '2004',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=0_LAiSdIXos'
-            }, {
-                title: 'Na Estrada',
-                year: '2012',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=sAb5vODOrgg'
-            }, {
-                title: 'Jia Zhang-ke',
-                year: '2014',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=CmH_V586QFY'
-            }, {
-                title: 'Ainda Estou Aqui',
-                year: '2024',
-                role: 'Direção',
-                image: 'http://www.youtube.com/watch?v=_NzqP0jmk3o'
-            },];
+            // ### INÍCIO: DADOS DO CORPUS FÍLMICO ###
+            const filmCorpusData = [
+                {
+                    title: "Ainda Estou Aqui",
+                    year: 2024,
+                    image:
+                        "https://upload.wikimedia.org/wikipedia/pt/5/57/Ainda_Estou_Aqui_2024_poster.jpg",
+                    synopsis:
+                        '   A direção de Walter Salles em "Ainda Estou Aqui" é guiada por uma motivação dupla. Há uma dívida pessoal e histórica, pois ele ainda não havia tratado diretamente os Anos de Chumbo. Soma-se a isso a memória afetiva da casa da família Paiva, um lugar que marcou sua juventude. Assim, Salles busca um realismo quase documental em sua abordagem.',
+                },
+                {
+                    title: "Central do Brasil",
+                    year: 1998,
+                    image:
+                        "https://midias-publicas.enciclopedia.itaucultural.org.br/9mvges8k1e797k514wurw34nq1ml",
+                    synopsis:
+                        "Em 'Central do Brasil' (1998), onde a viagem pelo sertão espelha a transformação da personagem Dora.",
+                },
+                {
+                    title: "Krajcberg, o Poeta dos Vestígios",
+                    year: 1987,
+                    image:
+                        "https://media.fstatic.com/CFBa_YmzOqW7lSvHRk3cdCW51sU=/322x478/smart/filters:format(webp)/media/movies/covers/2010/09/eeb5400ca13391fb0d2bf3a3dbef0517.jpg",
+                    synopsis:
+                        "Em 'Krajcberg, o Poeta dos Vestígios' (1987), Salles documenta um artista que, por sua vez, registra a destruição da natureza. ",
+                },
+                {
+                    title: "João & Antônio",
+                    year: 1992,
+                    image:
+                        "https://www.jobim.org/jobim/bitstream/handle/2010/4739/Joao%26Antonio.jpg?sequence=3",
+                    synopsis:
+                        "Este documentário sensível explora a vida de dois violeiros, João e Antônio, no interior do Brasil. Salles investiga a transmissão oral de cultura e a importância da música como forma de resistência e preservação da identidade em um mundo em constante mudança.",
+                },
+                {
+                    title: "Socorro Nobre",
+                    year: 1995,
+                    image:
+                        "https://m.media-amazon.com/images/M/MV5BNWQwY2YzMDMtZGZmMS00MzZkLTg4ZDctN2VhNTNiNjIwZDVmXkEyXkFqcGc@._V1_.jpg",
+                    synopsis:
+                        "Em 'Socorro Nobre' (1995), a própria troca de cartas se torna a matéria que estrutura a narrativa.",
+                },
+                {
+                    title: "Terra Estrangeira",
+                    year: 1995,
+                    image:
+                        "https://upload.wikimedia.org/wikipedia/pt/d/db/Terra_Estrangeira.jpg",
+                    synopsis:
+                        'Em "Terra Estrangeira" (1995), o deslocamento para Portugal explora a desterritorialização e a identidade fragmentada.',
+                },
+
+                {
+                    title: "O Primeiro Dia",
+                    year: 1998,
+                    image:
+                        "https://upload.wikimedia.org/wikipedia/pt/thumb/2/24/O_Primeiro_Dia.jpg/250px-O_Primeiro_Dia.jpg",
+                    synopsis:
+                        "Na virada do milênio, as histórias de João, um homem que acaba de sair da prisão, e Maria, uma jovem professora, se cruzam no Rio de Janeiro. Em 24 horas, eles buscam recomeçar suas vidas, enfrentando a violência e a esperança de um novo tempo. Um retrato do Brasil na encruzilhada do século.",
+                },
+                {
+                    title: "Abril Despedaçado",
+                    year: 2001,
+                    image:
+                        "https://upload.wikimedia.org/wikipedia/pt/thumb/b/b5/AbrilDespeda%C3%A7ado.jpg/250px-AbrilDespeda%C3%A7ado.jpg",
+                    synopsis:
+                        'Em "Abril Despedaçado" (2001), Salles investiga a persistência de estruturas sociais arcaicas, focando na luta do protagonista para escapar de um destino determinista, um tema que se alinha ao que chamamos de "cinema humanista" do diretor.',
+                },
+                {
+                    title: "Diários de Motocicleta",
+                    year: 2004,
+                    image:
+                        "https://upload.wikimedia.org/wikipedia/pt/7/76/Di%C3%A1rios_de_Motocicleta.jpg",
+                    synopsis:
+                        'Em "Diários de Motocicleta" (2004), a estrada catalisa o despertar político do jovem Ernesto Guevara – um filme que, inclusive, teve sua trilha sonora e canção original aclamadas internacionalmente, ganhando BAFTA e Oscar.',
+                },
+                {
+                    title: "Na Estrada",
+                    year: 2012,
+                    image:
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkaMVRNqxsrBxP678M0midVEGeQMkzI33eKg&s",
+                    synopsis:
+                        'Em "Na Estrada" (2012), a própria vida é vivida com o propósito explícito de ser registrada como literatura.',
+                },
+                {
+                    title: "Jia Zhang-ke, um Homem de Fenyang",
+                    year: 2014,
+                    image:
+                        "https://br.web.img3.acsta.net/pictures/15/07/23/20/15/577033.jpg",
+                    synopsis:
+                        'Em "Jia Zhang-ke, um Homem de Fenyang" (2014), Salles cria um "meta-arquivo" ao registrar a vida de outro cineasta cuja obra consiste em registrar a memória de uma China em transformação.'
+                    ,
+                },
+            ];
+            // ### FIM: DADOS DO CORPUS FÍLMICO ###
 
             const soundtrackData = [
-                { title: "Jimmy, Renda-se", artist: "Tom Zé (1970)", art: "https://www.ihu.unisinos.br/images/ihu/2024/11_gifs/10_11_ainda_estou_aqui_gif.gif", src: "./assets/music/tom-ze.mp3" },
-                { title: "É Preciso Dar Um Jeito", artist: "Erasmo Carlos (1971)", art: "https://p2.trrsf.com/image/fget/cf/500/0/filters:quality(100)/images.terra.com/2025/03/03/gravacao-de-tela-2025-03-02-as-23-56-44-vbngx7qiq1pw.gif", src: "./assets/music/erasmo-carlos.mp3" },
-                { title: "Take Me Back To Piauí", artist: "Juca Chaves (1970)", art: "https://aventurasnahistoria.com.br/media/stories/5-fatos-que-confundem-nossa-nocao-de-tempo/assets/3.gif", src: "https://www.soundjay.com/misc/sounds/wind-chime-1.mp3" },
-                { title: "Agoniza Mas Não Morre", artist: "Nelson Sargento (1978)", art: "https://images.virgula.me/2015/09/texto1.gif", src: "https://www.soundjay.com/buttons/sounds/button-1.mp3" },
-                { title: "Um Índio", artist: "Caetano Veloso (1976)", art: "https://64.media.tumblr.com/758a8910105b2949560911ef0324b4f5/41496092ab9aafdf-07/s540x810/cf39698e014ccfdad96cfe6cc06db0fadd556621.gif", src: "https://www.youtube.com/watch?v=GZFIhBfMj_4&list=RDGZFIhBfMj_4&start_radio=1" },
-                { title: "Falsa Baiana", artist: "Gal Costa (1971)", art: "https://media.tenor.com/gUb9yyyEiNEAAAAM/fernanda.gif", src: "https://www.soundjay.com/mechanical/sounds/clong-1.mp3" },
-                { title: "Sonora Instrumental", artist: "Warren Ellis (2024)", art: "https://media.tenor.com/UljUycv46ewAAAAC/fernanda-torres-selton-mello.gif", src: "./assets/music/ainda-estou-aqui.mp3" }
+                {
+                    title: "Jimmy, Renda-se",
+                    artist: "Tom Zé (1970)",
+                    art: "https://www.ihu.unisinos.br/images/ihu/2024/11_gifs/10_11_ainda_estou_aqui_gif.gif",
+                    src: "./assets/music/tom-ze.mp3",
+                },
+                {
+                    title: "É Preciso Dar Um Jeito",
+                    artist: "Erasmo Carlos (1971)",
+                    art: "https://p2.trrsf.com/image/fget/cf/500/0/filters:quality(100)/images.terra.com/2025/03/03/gravacao-de-tela-2025-03-02-as-23-56-44-vbngx7qiq1pw.gif",
+                    src: "./assets/music/erasmo-carlos.mp3",
+                },
+                {
+                    title: "Take Me Back To Piauí",
+                    artist: "Juca Chaves (1970)",
+                    art: "https://aventurasnahistoria.com.br/media/stories/5-fatos-que-confundem-nossa-nocao-de-tempo/assets/3.gif",
+                    src: "./assets/music/take-me-back.mp3",
+                },
+                {
+                    title: "Agoniza Mas Não Morre",
+                    artist: "Nelson Sargento (1978)",
+                    art: "https://images.virgula.me/2015/09/texto1.gif",
+                    src: "./assets/music/agoniza.mp3",
+                },
+                {
+                    title: "Um Índio",
+                    artist: "Caetano Veloso (1976)",
+                    art: "https://64.media.tumblr.com/758a8910105b2949560911ef0324b4f5/41496092ab9aafdf-07/s540x810/cf39698e014ccfdad96cfe6cc06db0fadd556621.gif",
+                    src: "./assets/music/um-indio.mp3",
+                },
+                {
+                    title: "Falsa Baiana",
+                    artist: "Gal Costa (1971)",
+                    art: "https://media.tenor.com/gUb9yyyEiNEAAAAM/fernanda.gif",
+                    src: "./assets/music/baiana.mp3",
+                },
+                {
+                    title: "Sonora Instrumental",
+                    artist: "Warren Ellis (2024)",
+                    art: "https://media.tenor.com/UljUycv46ewAAAAC/fernanda-torres-selton-mello.gif",
+                    src: "./assets/music/instrumental.mp3",
+                },
             ];
 
             const filmographyDb = {
                 director: {
-                    'Longas de Ficção': [{
-                        title: 'A Grande Arte',
-                        year: 1991,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Baseado no romance de Rubem Fonseca. Título nos EUA: Exposure.'
-                    }, {
-                        title: 'Terra Estrangeira',
-                        year: 1995,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Co-dirigido com Daniela Thomas. Também co-roteirista e editor.'
-                    }, {
-                        title: 'Central do Brasil',
-                        year: 1998,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Obra de consagração internacional. Também creditado pelo argumento e como produtor.'
-                    }, {
-                        title: 'O Primeiro Dia',
-                        year: 1998,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Co-dirigido com Daniela Thomas. Também co-roteirista.'
-                    }, {
-                        title: 'Abril Despedaçado',
-                        year: 2001,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Baseado no romance de Ismail Kadare. Também co-roteirista.'
-                    }, {
-                        title: 'Diários de Motocicleta',
-                        year: 2004,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Baseado nos diários de Che Guevara e Alberto Granado.'
-                    }, {
-                        title: 'Água Negra (Dark Water)',
-                        year: 2005,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Refilmagem do filme de terror japonês de Hideo Nakata.'
-                    }, {
-                        title: 'Linha de Passe',
-                        year: 2008,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Co-dirigido com Daniela Thomas. Também co-roteirista e produtor.'
-                    }, {
-                        title: 'Na Estrada (On the Road)',
-                        year: 2012,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Adaptação do romance de Jack Kerouac. Produção de Francis Ford Coppola.'
-                    }, {
-                        title: 'Ainda Estou Aqui',
-                        year: 2024,
-                        format: 'Longa-metragem de ficção',
-                        notes: 'Baseado no livro de Marcelo Rubens Paiva. Também produtor.'
-                    }],
-                    'Documentários': [{
-                        title: 'Krajcberg - O Poeta dos Vestígios',
-                        year: 1987,
-                        format: 'Documentário (média-metragem)',
-                        notes: 'Sobre o artista plástico Frans Krajcberg. Produzido para a TV Manchete.'
-                    }, {
-                        title: 'Chico ou o País da Delicadeza Perdida',
-                        year: 1989,
-                        format: 'Longa-metragem',
-                        notes: 'Sobre o músico e escritor Chico Buarque.'
-                    }, {
-                        title: 'Socorro Nobre',
-                        year: 1995,
-                        format: 'Curta-metragem documental',
-                        notes: 'Sobre a correspondência entre a presidiária Socorro Nobre e o artista Franz Krajcberg. Também roteirista e editor.'
-                    }, {
-                        title: 'Adão ou Somos Todos Filhos da Terra',
-                        year: 1999,
-                        format: 'Curta-metragem documental',
-                        notes: 'Co-dirigido com Kátia Lund, João Moreira Salles e Daniela Thomas.'
-                    }, {
-                        title: 'Jia Zhangke, um Homem de Fenyang',
-                        year: 2014,
-                        format: 'Longa-metragem documental',
-                        notes: 'Retrato do cineasta chinês Jia Zhangke. Também roteirista.'
-                    }, {
-                        title: 'Vozes de Paracatu e Bento',
-                        year: 2018,
-                        format: 'Curta-metragem documental',
-                        notes: 'Identificado em múltiplas bases de dados.'
-                    }],
+                    "Longas de Ficção": [
+                        {
+                            title: "A Grande Arte",
+                            year: 1991,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Baseado no romance de Rubem Fonseca. Título nos EUA: Exposure.",
+                        },
+                        {
+                            title: "Terra Estrangeira",
+                            year: 1995,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Co-dirigido com Daniela Thomas. Também co-roteirista e editor.",
+                        },
+                        {
+                            title: "Central do Brasil",
+                            year: 1998,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Obra de consagração internacional. Também creditado pelo argumento e como produtor.",
+                        },
+                        {
+                            title: "O Primeiro Dia",
+                            year: 1998,
+                            format: "Longa-metragem de ficção",
+                            notes: "Co-dirigido com Daniela Thomas. Também co-roteirista.",
+                        },
+                        {
+                            title: "Abril Despedaçado",
+                            year: 2001,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Baseado no romance de Ismail Kadare. Também co-roteirista.",
+                        },
+                        {
+                            title: "Diários de Motocicleta",
+                            year: 2004,
+                            format: "Longa-metragem de ficção",
+                            notes: "Baseado nos diários de Che Guevara e Alberto Granado.",
+                        },
+                        {
+                            title: "Água Negra (Dark Water)",
+                            year: 2005,
+                            format: "Longa-metragem de ficção",
+                            notes: "Refilmagem do filme de terror japonês de Hideo Nakata.",
+                        },
+                        {
+                            title: "Linha de Passe",
+                            year: 2008,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Co-dirigido com Daniela Thomas. Também co-roteirista e produtor.",
+                        },
+                        {
+                            title: "Na Estrada (On the Road)",
+                            year: 2012,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Adaptação do romance de Jack Kerouac. Produção de Francis Ford Coppola.",
+                        },
+                        {
+                            title: "Ainda Estou Aqui",
+                            year: 2024,
+                            format: "Longa-metragem de ficção",
+                            notes:
+                                "Baseado no livro de Marcelo Rubens Paiva. Também produtor.",
+                        },
+                    ],
+                    Documentários: [
+                        {
+                            title: "Krajcberg - O Poeta dos Vestígios",
+                            year: 1987,
+                            format: "Documentário (média-metragem)",
+                            notes:
+                                "Sobre o artista plástico Frans Krajcberg. Produzido para a TV Manchete.",
+                        },
+                        {
+                            title: "Chico ou o País da Delicadeza Perdida",
+                            year: 1989,
+                            format: "Longa-metragem",
+                            notes: "Sobre o músico e escritor Chico Buarque.",
+                        },
+                        {
+                            title: "Socorro Nobre",
+                            year: 1995,
+                            format: "Curta-metragem documental",
+                            notes:
+                                "Sobre a correspondência entre a presidiária Socorro Nobre e o artista Franz Krajcberg. Também roteirista e editor.",
+                        },
+                        {
+                            title: "Adão ou Somos Todos Filhos da Terra",
+                            year: 1999,
+                            format: "Curta-metragem documental",
+                            notes:
+                                "Co-dirigido com Kátia Lund, João Moreira Salles e Daniela Thomas.",
+                        },
+                        {
+                            title: "Jia Zhangke, um Homem de Fenyang",
+                            year: 2014,
+                            format: "Longa-metragem documental",
+                            notes:
+                                "Retrato do cineasta chinês Jia Zhangke. Também roteirista.",
+                        },
+                        {
+                            title: "Vozes de Paracatu e Bento",
+                            year: 2018,
+                            format: "Curta-metragem documental",
+                            notes: "Identificado em múltiplas bases de dados.",
+                        },
+                    ],
                 },
-                producer: [{
-                    title: 'Krajcberg - O Poeta dos Vestígios',
-                    year: 1987,
-                    format: 'Documentário',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Central do Brasil',
-                    year: 1998,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Madame Satã',
-                    year: 2002,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Cidade de Deus',
-                    year: 2002,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Coprodutor / Produtor Executivo.'
-                }, {
-                    title: 'Hermanas',
-                    year: 2005,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Cidade Baixa',
-                    year: 2005,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Casa de Areia',
-                    year: 2005,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'O Céu de Suely',
-                    year: 2006,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Nascido e Criado',
-                    year: 2006,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Coprodutor.'
-                }, {
-                    title: 'Linha de Passe',
-                    year: 2008,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Leonera',
-                    year: 2008,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Coprodutor.'
-                }, {
-                    title: 'Café de los Maestros',
-                    year: 2008,
-                    format: 'Longa-metragem documental',
-                    notes: 'Produtor / Produtor Executivo.'
-                }, {
-                    title: 'No Meu Lugar',
-                    year: 2009,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Quincas Berro d\'Água',
-                    year: 2010,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Transeunte',
-                    year: 2010,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor Executivo.'
-                }, {
-                    title: 'Construção',
-                    year: 2011,
-                    format: 'Documentário',
-                    notes: 'Produtor Associado.'
-                }, {
-                    title: 'Habi, a Estrangeira',
-                    year: 2013,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Paulina',
-                    year: 2015,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Aquarius',
-                    year: 2016,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Coprodutor.'
-                }, {
-                    title: 'Quando a Terra Treme',
-                    year: 2017,
-                    format: 'Episódio de antologia',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Deslembro',
-                    year: 2018,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Breve Miragem de Sol',
-                    year: 2019,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Querência',
-                    year: 2019,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Amazônia S.A.',
-                    year: 2019,
-                    format: 'Série documental para TV',
-                    notes: 'Produtor Associado.'
-                }, {
-                    title: 'Narciso em Férias',
-                    year: 2020,
-                    format: 'Longa-metragem documental',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Marinheiro das Montanhas',
-                    year: 2021,
-                    format: 'Longa-metragem documental',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Mundo Novo',
-                    year: 2021,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor Associado.'
-                }, {
-                    title: 'Arca de Noé',
-                    year: 2024,
-                    format: 'Longa-metragem de animação',
-                    notes: 'Produtor. Também Supervisor Artístico.'
-                }, {
-                    title: 'Ainda Estou Aqui',
-                    year: 2024,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor.'
-                }, {
-                    title: 'Manas',
-                    year: 2025,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Produtor Associado.'
-                }, {
-                    title: 'Cyclone',
-                    year: 2025,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Coprodutor.'
-                },],
-                writer: [{
-                    title: 'Terra Estrangeira',
-                    year: 1995,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Co-roteirista com Daniela Thomas e Marcos Bernstein.'
-                }, {
-                    title: 'Socorro Nobre',
-                    year: 1995,
-                    format: 'Curta-metragem documental',
-                    notes: 'Roteirista.'
-                }, {
-                    title: 'Central do Brasil',
-                    year: 1998,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Creditado pelo argumento ("Story by").'
-                }, {
-                    title: 'O Primeiro Dia',
-                    year: 1998,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Co-roteirista com Daniela Thomas e João Emanuel Carneiro.'
-                }, {
-                    title: 'Abril Despedaçado',
-                    year: 2001,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Co-roteirista com Sérgio Machado e Karim Aïnouz.'
-                }, {
-                    title: 'Paris, je t\'aime',
-                    year: 2006,
-                    format: 'Episódio de antologia',
-                    notes: 'Roteirista do segmento "Loin du 16e".'
-                }, {
-                    title: 'Linha de Passe',
-                    year: 2008,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Co-roteirista com Daniela Thomas e Bráulio Mantovani.'
-                }, {
-                    title: 'Em Que Tempo Vivemos?',
-                    year: 2017,
-                    format: 'Episódio de antologia',
-                    notes: 'Roteirista do segmento "Quando a Terra Treme".'
-                }, {
-                    title: 'Irmãos Freitas',
-                    year: 2019,
-                    format: 'Série de TV',
-                    notes: 'Criador e roteirista de 8 episódios.'
-                }, {
-                    title: 'A Contadora de Filmes',
-                    year: 2023,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Roteirista. Filme dirigido por Lone Scherfig.'
-                }, {
-                    title: 'Terra',
-                    year: 2025,
-                    format: 'Longa-metragem de ficção',
-                    notes: 'Creditado como roteirista.'
-                },],
+                producer: [
+                    {
+                        title: "Krajcberg - O Poeta dos Vestígios",
+                        year: 1987,
+                        format: "Documentário",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Central do Brasil",
+                        year: 1998,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Madame Satã",
+                        year: 2002,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Cidade de Deus",
+                        year: 2002,
+                        format: "Longa-metragem de ficção",
+                        notes: "Coprodutor / Produtor Executivo.",
+                    },
+                    {
+                        title: "Hermanas",
+                        year: 2005,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Cidade Baixa",
+                        year: 2005,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Casa de Areia",
+                        year: 2005,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "O Céu de Suely",
+                        year: 2006,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Nascido e Criado",
+                        year: 2006,
+                        format: "Longa-metragem de ficção",
+                        notes: "Coprodutor.",
+                    },
+                    {
+                        title: "Linha de Passe",
+                        year: 2008,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Leonera",
+                        year: 2008,
+                        format: "Longa-metragem de ficção",
+                        notes: "Coprodutor.",
+                    },
+                    {
+                        title: "Café de los Maestros",
+                        year: 2008,
+                        format: "Longa-metragem documental",
+                        notes: "Produtor / Produtor Executivo.",
+                    },
+                    {
+                        title: "No Meu Lugar",
+                        year: 2009,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Quincas Berro d'Água",
+                        year: 2010,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Transeunte",
+                        year: 2010,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor Executivo.",
+                    },
+                    {
+                        title: "Construção",
+                        year: 2011,
+                        format: "Documentário",
+                        notes: "Produtor Associado.",
+                    },
+                    {
+                        title: "Habi, a Estrangeira",
+                        year: 2013,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Paulina",
+                        year: 2015,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Aquarius",
+                        year: 2016,
+                        format: "Longa-metragem de ficção",
+                        notes: "Coprodutor.",
+                    },
+                    {
+                        title: "Quando a Terra Treme",
+                        year: 2017,
+                        format: "Episódio de antologia",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Deslembro",
+                        year: 2018,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Breve Miragem de Sol",
+                        year: 2019,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Querência",
+                        year: 2019,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Amazônia S.A.",
+                        year: 2019,
+                        format: "Série documental para TV",
+                        notes: "Produtor Associado.",
+                    },
+                    {
+                        title: "Narciso em Férias",
+                        year: 2020,
+                        format: "Longa-metragem documental",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Marinheiro das Montanhas",
+                        year: 2021,
+                        format: "Longa-metragem documental",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Mundo Novo",
+                        year: 2021,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor Associado.",
+                    },
+                    {
+                        title: "Arca de Noé",
+                        year: 2024,
+                        format: "Longa-metragem de animação",
+                        notes: "Produtor. Também Supervisor Artístico.",
+                    },
+                    {
+                        title: "Ainda Estou Aqui",
+                        year: 2024,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor.",
+                    },
+                    {
+                        title: "Manas",
+                        year: 2025,
+                        format: "Longa-metragem de ficção",
+                        notes: "Produtor Associado.",
+                    },
+                    {
+                        title: "Cyclone",
+                        year: 2025,
+                        format: "Longa-metragem de ficção",
+                        notes: "Coprodutor.",
+                    },
+                ],
+                writer: [
+                    {
+                        title: "Terra Estrangeira",
+                        year: 1995,
+                        format: "Longa-metragem de ficção",
+                        notes: "Co-roteirista com Daniela Thomas e Marcos Bernstein.",
+                    },
+                    {
+                        title: "Socorro Nobre",
+                        year: 1995,
+                        format: "Curta-metragem documental",
+                        notes: "Roteirista.",
+                    },
+                    {
+                        title: "Central do Brasil",
+                        year: 1998,
+                        format: "Longa-metragem de ficção",
+                        notes: 'Creditado pelo argumento ("Story by").',
+                    },
+                    {
+                        title: "O Primeiro Dia",
+                        year: 1998,
+                        format: "Longa-metragem de ficção",
+                        notes:
+                            "Co-roteirista com Daniela Thomas e João Emanuel Carneiro.",
+                    },
+                    {
+                        title: "Abril Despedaçado",
+                        year: 2001,
+                        format: "Longa-metragem de ficção",
+                        notes: "Co-roteirista com Sérgio Machado e Karim Aïnouz.",
+                    },
+                    {
+                        title: "Paris, je t'aime",
+                        year: 2006,
+                        format: "Episódio de antologia",
+                        notes: 'Roteirista do segmento "Loin du 16e".',
+                    },
+                    {
+                        title: "Linha de Passe",
+                        year: 2008,
+                        format: "Longa-metragem de ficção",
+                        notes: "Co-roteirista com Daniela Thomas e Bráulio Mantovani.",
+                    },
+                    {
+                        title: "Em Que Tempo Vivemos?",
+                        year: 2017,
+                        format: "Episódio de antologia",
+                        notes: 'Roteirista do segmento "Quando a Terra Treme".',
+                    },
+                    {
+                        title: "Irmãos Freitas",
+                        year: 2019,
+                        format: "Série de TV",
+                        notes: "Criador e roteirista de 8 episódios.",
+                    },
+                    {
+                        title: "A Contadora de Filmes",
+                        year: 2023,
+                        format: "Longa-metragem de ficção",
+                        notes: "Roteirista. Filme dirigido por Lone Scherfig.",
+                    },
+                    {
+                        title: "Terra",
+                        year: 2025,
+                        format: "Longa-metragem de ficção",
+                        notes: "Creditado como roteirista.",
+                    },
+                ],
             };
 
             // ## DADOS PARA O GRÁFICO DE RADAR ##
-            const radarChartData = {
-                labels: ["Foco na Vítima", "Confronto Direto", "Abstração Poética", "Uso de Arquivo", "Escala Íntima"],
-                directors: [{
-                    id: 'salles',
-                    name: "Walter Salles",
-                    color: "rgba(192, 132, 252, 1)", // Roxo Principal
-                    data: [9, 3, 4, 8, 9],
-                }, {
-                    id: 'guzman',
-                    name: "Patricio Guzmán",
-                    color: "rgba(250, 204, 21, 1)", // Amarelo
-                    data: [7, 2, 9, 7, 3],
-                }, {
-                    id: 'oppenheimer',
-                    name: "J. Oppenheimer",
-                    color: "rgba(249, 115, 22, 1)", // Laranja
-                    data: [4, 10, 3, 5, 6],
-                }, {
-                    id: 'panh',
-                    name: "Rithy Panh",
-                    color: "rgba(52, 211, 153, 1)", // Verde
-                    data: [8, 1, 8, 10, 7],
-                }]
+            const metodologyData = {
+                labels: [
+                    "Foco na Vítima",
+                    "Confronto Direto",
+                    "Abstração Poética",
+                    "Uso de Arquivo",
+                    "Escala Íntima",
+                ],
+                directors: [
+                    {
+                        id: "salles",
+                        name: "Qualitativa e Interpretativa",
+                        film: "",
+                        color: "rgba(192, 132, 252, 1)", // Roxo Principal
+                        data: [9, 3, 4, 8, 9],
+                        analysis:
+                            "A abordagem de Salles prioriza a escala íntima e o foco na vítima, utilizando o arquivo para construir a narrativa. Ele evita o confronto direto, optando por uma abstração poética moderada para representar o trauma familiar e político.",
+                    },
+                    {
+                        id: "guzman",
+                        name: "Exploratória e Descritiva",
+                        film: "",
+                        color: "rgba(250, 204, 21, 1)", // Amarelo
+                        data: [7, 2, 9, 7, 3],
+                        analysis:
+                            "Guzmán utiliza a paisagem como um palimpsesto onde se inscrevem memórias cósmicas e tragédias humanas. Sua escala é geológica e expansiva, buscando os vestígios dos desaparecidos na imensidão do deserto, numa poderosa abstração poética.",
+                    },
+                    {
+                        id: "panh",
+                        name: "Análise Filmica",
+                        film: "",
+                        color: "rgba(52, 211, 153, 1)", // Verde
+                        data: [8, 1, 8, 10, 7],
+                        analysis:
+                            "Panh enfrenta um vácuo de imagens, criando a 'imagem que falta' com miniaturas de argila. Seu uso do arquivo é construtivo, não documental. Onde Salles parte de um excesso de arquivo, Panh constrói do zero, revelando uma relação distinta com a verdade histórica.",
+                    },
+                    {
+                        id: "panh",
+                        name: "Análise Textual",
+                        film: "",
+                        color: "rgba(52, 211, 153, 1)", // Verde
+                        data: [8, 1, 8, 10, 7],
+                        analysis:
+                            "Panh enfrenta um vácuo de imagens, criando a 'imagem que falta' com miniaturas de argila. Seu uso do arquivo é construtivo, não documental. Onde Salles parte de um excesso de arquivo, Panh constrói do zero, revelando uma relação distinta com a verdade histórica.",
+                    },
+                    {
+                        id: "panh",
+                        name: "Corpus de Discurso",
+                        film: "",
+                        color: "rgba(52, 211, 153, 1)", // Verde
+                        data: [8, 1, 8, 10, 7],
+                        analysis:
+                            "Panh enfrenta um vácuo de imagens, criando a 'imagem que falta' com miniaturas de argila. Seu uso do arquivo é construtivo, não documental. Onde Salles parte de um excesso de arquivo, Panh constrói do zero, revelando uma relação distinta com a verdade histórica.",
+                    },
+                    {
+                        id: "Estudo de Caso",
+                        name: "Triangulação dos Dados",
+                        film: "",
+                        color: "rgba(249, 115, 22, 1)", // Laranja
+                        data: [4, 10, 3, 5, 6],
+                        analysis:
+                            "A abordagem de Oppenheimer é radicalmente oposta à de Salles. Ele foca no perpetrador através do confronto direto, convidando-os a reencenar seus crimes. A estratégia expõe a banalidade do mal, abrindo mão da escala íntima para um impacto chocante.",
+                    },
+                ],
             };
-
-
-
             // =================================================================================
             // RENDERIZAÇÃO DINÂMICA DO CONTEÚDO
             // =================================================================================
 
+            // ## DADOS PARA O GRÁFICO DE RADAR ##
+            const radarChartData = {
+                labels: [
+                    "Foco na Vítima",
+                    "Confronto Direto",
+                    "Abstração Poética",
+                    "Uso de Arquivo",
+                    "Escala Íntima",
+                ],
+                directors: [
+                    {
+                        id: "salles",
+                        name: "Reconhecimento",
+                        film: "Festivais e Prêmios",
+                        color: "rgba(192, 132, 252, 1)", // Roxo Principal
+                        data: [9, 3, 4, 8, 9],
+                        analysis:
+                            "A jornada do filme começou com reconhecimento em festivais de prestígio, como o 81º Festival Internacional de Cinema de Veneza em 2024, onde conquistou o prêmio de Melhor Roteiro, entre outros. Essa validação inicial conferiu imediatamente um alto grau de capital simbólico. A acumulação sequencial de capital simbólico, que começou em Veneza e progrediu por prêmios regionais até culminar no Globo de Ouro e no Oscar, ilustra um processo de validação estratégico e cumulativo. Cada distinção funcionou como um degrau, elevando o perfil do filme e aumentando seu valor no campo cinematográfico global, o que, por sua vez, influenciou diretamente as indicações e vitórias subsequentes.",
+                    },
+                    {
+                        id: "guzman",
+                        name: "Vitórias Subsequentes",
+                        film: "Prêmios Platino em 2025",
+                        color: "rgba(250, 204, 21, 1)", // Amarelo
+                        data: [7, 2, 9, 7, 3],
+                        analysis:
+                            "As vitórias nos Prêmios Platino em 2025 (Melhor Filme Ibero-Americano, Melhor Direção para Walter Salles e Melhor Atriz para Fernanda Torres) solidificaram sua posição na esfera ibero-americana. O momento crucial chegou com a histórica vitória de Fernanda Torres no Globo de Ouro de Melhor Atriz em Filme de Drama em 2025, tornando-se a primeira atriz brasileira a receber o prêmio. Isso amplificou a visibilidade e o prestígio do filme em escala global.",
+                    },
+                    {
+                        id: "panh",
+                        name: "Oscar Histórico",
+                        film: "Oscar de Melhor Filme Internacional ",
+                        color: "rgba(52, 211, 153, 1)", // Verde
+                        data: [6, 2, 8, 10, 7],
+                        analysis:
+                            "O ápice dessa trajetória foi a vitória no Oscar de Melhor Filme Internacional na 97ª edição dos Prêmios da Academia, acompanhada de indicações para Melhor Filme e Melhor Atriz. Essa conquista, como destacado pelo próprio Walter Salles, representou uma 'vitória histórica' para o Brasil, tornando 'Ainda Estou Aqui' o primeiro filme brasileiro a vencer um Oscar em qualquer categoria.",
+                    },
+                    {
+                        id: "outroid",
+                        name: "Aumento da Representação na Academia",
+                        film: "AMPAS",
+                        color: "rgba(255, 159, 127)", // Verde
+                        data: [8, 1, 8, 10, 7],
+                        analysis:
+                            "Um dos impactos estruturais do sucesso do filme é o aumento direto da representação brasileira na Academia de Artes e Ciências Cinematográficas (AMPAS). Em 2025, após a vitória do filme no Oscar, vários membros-chave de sua equipe foram convidados a se juntar à Academia. Esses convites, que incluíram os roteiristas, Fernanda Torres, a produtora, o diretor de fotografia e a figurinista, foram 'não apenas um reconhecimento individual; foi um aumento do poder de influência do cinema brasileiro dentro do campo'. A filiação à AMPAS é uma forma de capital social que concede acesso a redes e poder de voto, aumentando a voz e a influência coletiva do cinema brasileiro na instituição global mais poderosa.",
+                    },
+                    {
+                        id: "outro",
+                        name: "A Influência de Fernanda Torres",
+                        film: "",
+                        color: "rgba(100, 0, 0)", // Verde
+                        data: [10, 9, 8, 10, 7],
+                        analysis:
+                            "A trajetória individual de Fernanda Torres exemplifica a conversão de capital simbólico em influência social direta. Além de suas vitórias e indicações, seu status elevado é sublinhado por sua nomeação como membro do júri da competição principal do 82º Festival de Cinema de Veneza em 2025. Esse papel a coloca em uma posição poder cultural, permitindo-lhe moldar diretamente o reconhecimento e a valorização de novas obras.",
+                    },
+                    {
+                        id: "Estudo de Caso",
+                        name: "Endosso de Diretores Internacionais",
+                        film: "",
+                        color: "rgba(249, 115, 22, 1)", // Laranja
+                        data: [4, 10, 3, 5, 6],
+                        analysis:
+                            "O capital simbólico do filme foi ainda mais reforçado pelo elogio explícito de diretores internacionais altamente respeitados. Martin Scorsese, por exemplo, enviou um 'e-mail maravilhoso' a Walter Salles, expressando sua admiração. Da mesma forma, Salles dedicou publicamente sua indicação ao BAFTA a Alfonso Cuarón, afirmando que Cuarón 'abraçou' o filme e 'conduziu um debate fundamental' sobre ele. Esse reconhecimento por pares, que possuem imenso capital cultural, empresta credibilidade artística ao filme e é particularmente ressonante dentro do discurso da 'teoria do autor'",
+                    },
+                ],
+            };
+            // =================================================================================
+            // RENDERIZAÇÃO DINÂMICA DO CONTEÚDO
+            // =================================================================================
+
+            // ### FUNÇÃO DE RENDERIZAÇÃO CORRETA PARA O CARROSSEL DE FILMES ###
+            function renderFilmCorpus() {
+                const container = document.getElementById("film-corpus-container");
+                if (!container) return;
+
+                filmCorpusData.forEach((film) => {
+                    // Adicionado um 'div' em volta para funcionar como item de carrossel
+                    const cardHTML = `
+                        <div class="flex-shrink-0 w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5 group">
+                            <div class="card-scene film-card-scene">
+                                <div class="card">
+                                    <div class="card-face card-face-front">
+                                        <img src="${film.image}" alt="Pôster do filme ${film.title}">
+                                        <div class="film-title">
+                                            ${film.title} (${film.year})
+                                        </div>
+                                    </div>
+                                    <div class="card-face card-face-back">
+                                        <h4 class="font-bold text-purple-300 text-lg mb-2">${film.title} (${film.year})</h4>
+                                        <p>${film.synopsis}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
+            }
+
             function getVideoEmbedInfo(url) {
-                // YouTube
-                const ytRegExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
-                const ytMatch = url.match(ytRegExp);
+                let videoId = null;
+                let embedModalUrl = null;
+                let embedBackgroundUrl = null;
+
+                const youtubeRegex =
+                    /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|googleusercontent\.com\/youtube\.com\/)([^"&?\/]{1,11})/i;
+                const ytMatch = url.match(youtubeRegex);
+
                 if (ytMatch && ytMatch[1]) {
-                    const videoId = ytMatch[1];
+                    videoId = ytMatch[1];
+                    embedModalUrl = `https://www.youtube.com/embed/${videoId}`;
+                    embedBackgroundUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3`;
+
                     return {
-                        type: 'youtube',
-                        background: `<iframe src="https://www.youtube.com/embed/$${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
-                        modal: `https://www.youtube.com/embed/$${videoId}`
+                        type: "youtube",
+                        background: `<iframe src="${embedBackgroundUrl}" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
+                        modal: embedModalUrl,
                     };
                 }
-                // Vimeo
+
                 const vimeoRegExp = /vimeo\.com\/(?:video\/)?(\d+)/i;
                 const vimeoMatch = url.match(vimeoRegExp);
                 if (vimeoMatch && vimeoMatch[1]) {
                     const vimeoId = vimeoMatch[1];
                     return {
-                        type: 'vimeo',
+                        type: "vimeo",
                         background: `<iframe src="https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=1&loop=1&background=1" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
-                        modal: `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`
+                        modal: `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`,
                     };
                 }
-                // Dailymotion (exemplo)
-                const dmRegExp = /dailymotion\.com\/player\.html\?video=([a-zA-Z0-9]+)/i;
+
+                const dmRegExp =
+                    /dailymotion\.com\/player\.html\?video=([a-zA-Z0-9]+)/i;
                 const dmMatch = url.match(dmRegExp);
                 if (dmMatch && dmMatch[1]) {
                     const dmId = dmMatch[1];
                     return {
-                        type: 'dailymotion',
+                        type: "dailymotion",
                         background: `<iframe src="https://www.dailymotion.com/embed/video/${dmId}?autoplay=1&mute=1&loop=1&background=1" frameborder="0" allow="autoplay; loop; muted; playsinline" allowfullscreen class="w-full h-full object-cover absolute inset-0 pointer-events-none scale-150"></iframe>`,
-                        modal: `https://www.dailymotion.com/embed/video/${dmId}?autoplay=1`
+                        modal: `https://www.dailymotion.com/embed/video/${dmId}?autoplay=1`,
                     };
                 }
-                // Fallback genérico
+
                 return {
-                    type: 'other',
+                    type: "other",
                     background: `<div class="w-full h-full bg-gray-900 flex items-center justify-center text-gray-500">URL de vídeo não suportada para pré-visualização.</div>`,
-                    modal: url
+                    modal: url,
                 };
             }
-
-            const heroCarousel = document.getElementById('hero-carousel');
-            heroSlidesData.forEach(slide => {
+            const heroCarousel = document.getElementById("hero-carousel");
+            heroSlidesData.forEach((slide) => {
                 const embed = getVideoEmbedInfo(slide.videoUrl);
                 heroCarousel.innerHTML += `
                                 <div class="hero-slide absolute w-full h-full transition-opacity duration-1000 ease-in-out opacity-0" data-modal-video-url="${embed.modal}">
@@ -1146,30 +1774,40 @@
                                         <h2 class="text-2xl md:text-2xl font-extrabold text-white my-4 leading-tight">ASSINATURA DE WALTER:</br> DO STORYTELLING DOCUMENTAL </br> À IMERSÃO NA IDENTIDADE DO PERSONAGEM,</br> UMA ARTE DE ALCANCE GLOBAL</h2>
                                         <p class="text-gray-200 md:text-3xl mt-2 max-w-xl">Prof.ª Doutora Daniela Satomi Saito</p>
                                         <button class="play-video-btn mt-8 bg-white/90 hover:bg-white text-black font-bold py-3 px-8 rounded-full w-fit transition">
-                                            Assistir ao Trailer
+                                            Assistir
                                         </button>
                                     </div>
                                 </div>`;
             });
 
-            const awardsContainer = document.getElementById('awards-container');
-            awardsData.forEach(award => {
+            const awardsContainer = document.getElementById("awards-container");
+            awardsData.forEach((award) => {
                 awardsContainer.innerHTML += `<div class="bg-purple-900/50 p-4 rounded-lg"><p class="text-2xl font-bold">${award.name}</p><p class="text-sm text-purple-300">${award.detail}</p><p class="text-xs text-gray-400">${award.year}</p></div>`;
             });
 
-            const theoryCarousel = document.getElementById('theory-carousel');
-            theoryData.forEach(item => {
-                theoryCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 group"><img src="${item.image}" alt="${item.concept}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><div class="mt-2"><h4 class="thumbnail-title text-gray-300 font-bold transition-colors group-hover:text-white">${item.concept}</h4><p class="text-sm text-purple-400">${item.author}</p><p class="text-xs text-gray-400 mt-1">${item.explanation}</p></div></div>`;
+            const theoryCarousel = document.getElementById("theory-carousel");
+            theoryData.forEach((item) => {
+                theoryCarousel.innerHTML += `
+                <div class="flex-shrink-0 w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 group">
+                    <div class="${item.color} rounded-lg h-64 flex items-center justify-center mb-2 shadow-lg">
+                        <span class="text-white text-5xl font-bold">${item.mainWord}</span>
+                    </div>
+                    <div class="text-left p-1">
+                        <h4 class="font-bold text-white">${item.concept}</h4>
+                        <p class="text-sm text-purple-400">${item.author}</p>
+                        <p class="text-xs text-gray-400 mt-1">${item.explanation}</p>
+                    </div>
+                </div>`;
             });
 
-            const filmographyCarousel = document.getElementById('filmography-carousel');
-            filmographyData.forEach(film => {
-                filmographyCarousel.innerHTML += `<div class="thumbnail-item flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6 group"><img src="${film.image}" alt="${film.title}" class="thumbnail-image w-full rounded-lg border-2 border-transparent transition-transform duration-300"><p class="thumbnail-title mt-2 text-gray-300 font-semibold transition-colors">${film.title}</p><p class="text-sm text-gray-500">${film.year} - ${film.role}</p></div>`;
-            });
-
-            const soundtrackContainer = document.getElementById('soundtrack-container');
-            soundtrackData.forEach(track => {
-                const imageStyle = track.title === "Agoniza Mas Não Morre" ? 'style="object-position: left;"' : '';
+            const soundtrackContainer = document.getElementById(
+                "soundtrack-container"
+            );
+            soundtrackData.forEach((track) => {
+                const imageStyle =
+                    track.title === "Agoniza Mas Não Morre"
+                        ? 'style="object-position: left;"'
+                        : "";
                 soundtrackContainer.innerHTML += `
                 <div class="music-card text-center group flex-shrink-0 w-1/3 md:w-1/5 lg:w-1/6" data-title="${track.title}" data-artist="${track.artist}" data-art="${track.art}" data-src="${track.src}">
                     <div class="relative">
@@ -1183,44 +1821,47 @@
                 </div>`;
             });
 
-            // ================================================================================= 
+            // ### CHAMADA DA FUNÇÃO DE RENDERIZAÇÃO ###
+            renderFilmCorpus();
+
+            // =================================================================================
             // LÓGICA DE INTERAÇÃO (CARROSSEL, MODAL, PLAYER)
             // =================================================================================
 
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
+            const header = document.getElementById("main-header");
+            window.addEventListener("scroll", () => {
                 if (window.scrollY > 50) {
-                    header.classList.add('bg-[#0b011d]');
+                    header.classList.add("bg-[#0b011d]");
                 } else {
-                    header.classList.remove('bg-[#0b011d]');
+                    header.classList.remove("bg-[#0b011d]");
                 }
             });
 
-            const slides = document.querySelectorAll('.hero-slide');
-            const dotsContainer = document.getElementById('hero-dots-container');
+            const slides = document.querySelectorAll(".hero-slide");
+            const dotsContainer = document.getElementById("hero-dots-container");
             let currentSlide = 0;
             let slideInterval;
 
             if (slides.length > 0) {
                 slides.forEach((_, i) => {
-                    const dot = document.createElement('button');
-                    dot.classList.add('dot');
-                    dot.setAttribute('aria-label', `Ir para o slide ${i + 1}`);
-                    dot.addEventListener('click', () => {
+                    const dot = document.createElement("button");
+                    dot.classList.add("dot");
+                    dot.setAttribute("aria-label", `Ir para o slide ${i + 1}`);
+                    dot.addEventListener("click", () => {
                         goToSlide(i);
                         resetInterval();
                     });
                     dotsContainer.appendChild(dot);
                 });
 
-                const dots = dotsContainer.querySelectorAll('.dot');
+                const dots = dotsContainer.querySelectorAll(".dot");
 
                 function goToSlide(n) {
-                    slides[currentSlide].classList.remove('opacity-100');
-                    dots[currentSlide].classList.remove('active');
+                    slides[currentSlide].classList.remove("opacity-100");
+                    dots[currentSlide].classList.remove("active");
                     currentSlide = (n + slides.length) % slides.length;
-                    slides[currentSlide].classList.add('opacity-100');
-                    dots[currentSlide].classList.add('active');
+                    slides[currentSlide].classList.add("opacity-100");
+                    dots[currentSlide].classList.add("active");
                 }
 
                 function nextSlide() {
@@ -1240,68 +1881,72 @@
                 startInterval();
             }
 
-            const videoModal = document.getElementById('video-modal');
-            const videoIframe = document.getElementById('video-iframe');
-            const closeModalBtn = document.getElementById('close-modal-btn');
+            const videoModal = document.getElementById("video-modal");
+            const videoIframe = document.getElementById("video-iframe");
+            const closeModalBtn = document.getElementById("close-modal-btn");
 
             function openModal(videoUrl) {
                 const url = new URL(videoUrl);
-                url.searchParams.set('autoplay', '1');
-                url.searchParams.set('controls', '1');
-                url.searchParams.set('rel', '0');
+                url.searchParams.set("autoplay", "1");
+                url.searchParams.set("controls", "1");
+                url.searchParams.set("rel", "0");
                 videoIframe.src = url.toString();
-                videoModal.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
+                videoModal.classList.remove("hidden");
+                document.body.classList.add("overflow-hidden");
             }
 
             function closeModal() {
-                videoIframe.src = '';
-                videoModal.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
+                videoIframe.src = "";
+                videoModal.classList.add("hidden");
+                document.body.classList.remove("overflow-hidden");
             }
 
-            document.querySelectorAll('.play-video-btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
+            document.querySelectorAll(".play-video-btn").forEach((btn) => {
+                btn.addEventListener("click", function (e) {
                     e.preventDefault();
-                    const videoUrl = this.closest('[data-modal-video-url]').dataset.modalVideoUrl;
+                    const videoUrl = this.closest("[data-modal-video-url]").dataset
+                        .modalVideoUrl;
                     if (videoUrl) openModal(videoUrl);
                 });
             });
 
-            closeModalBtn.addEventListener('click', closeModal);
-            videoModal.addEventListener('click', (e) => {
+            closeModalBtn.addEventListener("click", closeModal);
+            videoModal.addEventListener("click", (e) => {
                 if (e.target === videoModal) closeModal();
             });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) closeModal();
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && !videoModal.classList.contains("hidden"))
+                    closeModal();
             });
 
             // --- Lógica do Player de Áudio ---
             const state = {
                 queue: [],
                 currentTrackIndex: -1,
-                isPlaying: false
+                isPlaying: false,
             };
             const DOM = {
-                audioPlayer: document.getElementById('audio-player'),
-                playerFooter: document.getElementById('player-footer'),
-                playerPlayPauseBtn: document.getElementById('player-play-pause-btn'),
-                playerPlayPauseIcon: document.getElementById('player-play-pause-icon'),
-                playerNextBtn: document.getElementById('player-next-btn'),
-                playerPrevBtn: document.getElementById('player-prev-btn'),
-                playerArt: document.getElementById('player-art'),
-                playerTitle: document.getElementById('player-title'),
-                playerArtist: document.getElementById('player-artist'),
-                playerProgressBar: document.getElementById('player-progress-bar'),
-                playerCurrentTime: document.getElementById('player-current-time'),
-                playerDuration: document.getElementById('player-duration'),
+                audioPlayer: document.getElementById("audio-player"),
+                playerFooter: document.getElementById("player-footer"),
+                playerPlayPauseBtn: document.getElementById("player-play-pause-btn"),
+                playerPlayPauseIcon: document.getElementById(
+                    "player-play-pause-icon"
+                ),
+                playerNextBtn: document.getElementById("player-next-btn"),
+                playerPrevBtn: document.getElementById("player-prev-btn"),
+                playerArt: document.getElementById("player-art"),
+                playerTitle: document.getElementById("player-title"),
+                playerArtist: document.getElementById("player-artist"),
+                playerProgressBar: document.getElementById("player-progress-bar"),
+                playerCurrentTime: document.getElementById("player-current-time"),
+                playerDuration: document.getElementById("player-duration"),
             };
 
             const formatTime = (seconds) => {
-                if (isNaN(seconds)) return '0:00';
+                if (isNaN(seconds)) return "0:00";
                 const minutes = Math.floor(seconds / 60);
                 const secs = Math.floor(seconds % 60);
-                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+                return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
             };
 
             const ui = {
@@ -1310,13 +1955,16 @@
                     DOM.playerArt.src = track.art;
                     DOM.playerTitle.textContent = track.title;
                     DOM.playerArtist.textContent = track.artist;
-                    DOM.playerFooter.classList.add('visible');
+                    DOM.playerFooter.classList.add("visible");
                 },
                 updatePlayPauseIcon: (isPlaying) => {
-                    DOM.playerPlayPauseIcon.src = isPlaying ?
-                        'https://img.icons8.com/ios-glyphs/30/000000/pause--v1.png' :
-                        'https://img.icons8.com/ios-glyphs/30/000000/play--v1.png';
-                    DOM.playerPlayPauseBtn.setAttribute('aria-label', isPlaying ? 'Pausar' : 'Reproduzir');
+                    DOM.playerPlayPauseIcon.src = isPlaying
+                        ? "https://img.icons8.com/ios-glyphs/30/000000/pause--v1.png"
+                        : "https://img.icons8.com/ios-glyphs/30/000000/play--v1.png";
+                    DOM.playerPlayPauseBtn.setAttribute(
+                        "aria-label",
+                        isPlaying ? "Pausar" : "Reproduzir"
+                    );
                 },
             };
 
@@ -1330,7 +1978,9 @@
                     const track = state.queue[index];
                     DOM.audioPlayer.src = track.src;
                     ui.updatePlayerUI(track);
-                    DOM.audioPlayer.play().catch(err => console.error("Erro ao tocar:", err));
+                    DOM.audioPlayer
+                        .play()
+                        .catch((err) => console.error("Erro ao tocar:", err));
                 },
                 togglePlayPause: () => {
                     if (state.currentTrackIndex === -1 && state.queue.length > 0) {
@@ -1341,20 +1991,22 @@
                     else DOM.audioPlayer.pause();
                 },
                 nextTrack: () => {
-                    audioManager.playTrack((state.currentTrackIndex + 1) % state.queue.length);
+                    audioManager.playTrack(
+                        (state.currentTrackIndex + 1) % state.queue.length
+                    );
                 },
                 prevTrack: () => {
                     if (DOM.audioPlayer.currentTime > 3) {
                         DOM.audioPlayer.currentTime = 0;
                         return;
                     }
-                    audioManager.playTrack((state.currentTrackIndex - 1 + state.queue.length) % state.queue.length);
+                    audioManager.playTrack(
+                        (state.currentTrackIndex - 1 + state.queue.length) %
+                        state.queue.length
+                    );
                 },
                 updateProgress: () => {
-                    const {
-                        duration,
-                        currentTime
-                    } = DOM.audioPlayer;
+                    const { duration, currentTime } = DOM.audioPlayer;
                     if (isNaN(duration)) return;
                     DOM.playerProgressBar.value = (currentTime / duration) * 100;
                     DOM.playerCurrentTime.textContent = formatTime(currentTime);
@@ -1362,123 +2014,146 @@
             };
 
             audioManager.loadQueue(soundtrackData);
-            document.querySelectorAll('.music-card').forEach((card, index) => card.addEventListener('click', () => audioManager.playTrack(index)));
-            DOM.playerPlayPauseBtn.addEventListener('click', audioManager.togglePlayPause);
-            DOM.playerNextBtn.addEventListener('click', audioManager.nextTrack);
-            DOM.playerPrevBtn.addEventListener('click', audioManager.prevTrack);
-            DOM.audioPlayer.addEventListener('play', () => {
+            document
+                .querySelectorAll(".music-card")
+                .forEach((card, index) =>
+                    card.addEventListener("click", () => audioManager.playTrack(index))
+                );
+            DOM.playerPlayPauseBtn.addEventListener(
+                "click",
+                audioManager.togglePlayPause
+            );
+            DOM.playerNextBtn.addEventListener("click", audioManager.nextTrack);
+            DOM.playerPrevBtn.addEventListener("click", audioManager.prevTrack);
+            DOM.audioPlayer.addEventListener("play", () => {
                 state.isPlaying = true;
                 ui.updatePlayPauseIcon(true);
             });
-            DOM.audioPlayer.addEventListener('pause', () => {
+            DOM.audioPlayer.addEventListener("pause", () => {
                 state.isPlaying = false;
                 ui.updatePlayPauseIcon(false);
             });
-            DOM.audioPlayer.addEventListener('timeupdate', audioManager.updateProgress);
-            DOM.audioPlayer.addEventListener('ended', audioManager.nextTrack);
-            DOM.audioPlayer.addEventListener('loadedmetadata', () => {
+            DOM.audioPlayer.addEventListener(
+                "timeupdate",
+                audioManager.updateProgress
+            );
+            DOM.audioPlayer.addEventListener("ended", audioManager.nextTrack);
+            DOM.audioPlayer.addEventListener("loadedmetadata", () => {
                 DOM.playerDuration.textContent = formatTime(DOM.audioPlayer.duration);
             });
-            DOM.playerProgressBar.addEventListener('input', (e) => {
+            DOM.playerProgressBar.addEventListener("input", (e) => {
                 if (isNaN(DOM.audioPlayer.duration)) return;
-                DOM.audioPlayer.currentTime = (e.target.value / 100) * DOM.audioPlayer.duration;
+                DOM.audioPlayer.currentTime =
+                    (e.target.value / 100) * DOM.audioPlayer.duration;
             });
 
             // ========================================================================
-            // ## INÍCIO DA LÓGICA PARA VIRAR A CARTA ##
+            // ## LÓGICA PARA VIRAR A CARTA (ATUALIZADA PARA INCLUIR OS NOVOS CARDS) ##
             // ========================================================================
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.addEventListener('click', function () {
-                    card.classList.toggle('is-flipped');
+            const allCards = document.querySelectorAll(".card");
+            allCards.forEach((card) => {
+                card.addEventListener("click", function () {
+                    card.classList.toggle("is-flipped");
                 });
             });
             // ========================================================================
             // ## FIM DA LÓGICA PARA VIRAR A CARTA ##
             // ========================================================================
             // ========================================================================
-            // ## INÍCIO DA LÓGICA PARA O GRÁFICO DE OBJETIVOS ##
+            // ## INÍCIO DA LÓGICA PARA O GRÁFICO DE OBJETIVOS (Polar Area Chart) ##
             // ========================================================================
-            const objCanvas = document.getElementById('objectivesChart');
-            const objectiveDetailsContainer = document.getElementById('objective-details');
+            const objCanvas = document.getElementById("objectivesChart");
+            const objectiveDetailsContainer =
+                document.getElementById("objective-details");
 
             if (objCanvas && objectiveDetailsContainer) {
                 const chart = new Chart(objCanvas, {
-                    type: 'polarArea', // Define o tipo de gráfico
+                    type: "polarArea", // Define o tipo de gráfico
                     data: {
-                        labels: specificObjectivesData.map(obj => obj.label),
-                        datasets: [{
-                            label: 'Objetivos Específicos',
-                            data: specificObjectivesData.map(obj => obj.value), // Usa os valores definidos
-                            backgroundColor: [
-                                'rgba(168, 85, 247, 0.7)',
-                                'rgba(147, 51, 234, 0.7)',
-                                'rgba(126, 34, 206, 0.7)',
-                                'rgba(107, 33, 168, 0.7)'
-                            ],
-                            borderColor: '#1e1b4b',
-                            borderWidth: 2,
-                        }]
+                        labels: specificObjectivesData.map((obj) => obj.label),
+                        datasets: [
+                            {
+                                label: "Objetivos Específicos",
+                                data: specificObjectivesData.map((obj) => obj.value), // Usa os valores definidos
+                                backgroundColor: [
+                                    "rgba(168, 85, 247, 0.7)", // Purple
+                                    "rgba(147, 51, 234, 0.7)", // Darker Purple
+                                    "rgba(126, 34, 206, 0.7)", // Even Darker Purple
+                                    "rgba(107, 33, 168, 0.7)", // Deep Purple
+                                    "rgba(93, 22, 138, 0.7)", // Darkest Purple
+                                ],
+                                borderColor: "#1e1b4b", // Cor da borda do gráfico
+                                borderWidth: 2,
+                            },
+                        ],
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
-                            r: { // Configurações do eixo radial
+                            r: {
+                                // Configurações do eixo radial
                                 ticks: {
-                                    display: false
+                                    display: false, // Esconde os ticks numéricos no eixo radial
                                 },
                                 grid: {
-                                    color: 'rgba(107, 33, 168, 0.2)'
+                                    color: "rgba(107, 33, 168, 0.2)", // Cor das linhas de grade
                                 },
                                 pointLabels: {
-                                    display: false
-                                }
-                            }
+                                    display: false, // Esconde os rótulos dos pontos (labels)
+                                },
+                            },
                         },
                         plugins: {
-                            legend: { // Configura a legenda interativa
+                            legend: {
+                                // Configura a legenda interativa
                                 display: true,
-                                position: 'top',
+                                position: "top",
                                 labels: {
-                                    color: '#e5e7eb', // Cor do texto da legenda
+                                    color: "#e5e7eb", // Cor do texto da legenda
                                     font: {
-                                        size: 14
-                                    }
-                                }
+                                        size: 14,
+                                    },
+                                },
                             },
                             tooltip: {
-                                enabled: true
-                            }
+                                enabled: true, // Habilita tooltips ao passar o mouse
+                            },
                         },
-                        onClick: (event, elements) => { // Ação ao clicar numa fatia
+                        onClick: (event, elements) => {
+                            // Ação ao clicar numa fatia do gráfico
                             if (elements.length > 0) {
                                 const elementIndex = elements[0].index;
                                 const objective = specificObjectivesData[elementIndex];
                                 updateObjectiveDetails(objective);
                             }
-                        }
-                    }
+                        },
+                    },
                 });
 
+                /**
+                 * Atualiza os detalhes do objetivo específico na interface.
+                 * @param {object} objective O objeto do objetivo a ser exibido.
+                 */
                 function updateObjectiveDetails(objective) {
-                    objectiveDetailsContainer.style.opacity = 0;
+                    objectiveDetailsContainer.style.opacity = 0; // Esconde para transição
                     setTimeout(() => {
                         objectiveDetailsContainer.innerHTML = `
-                    <div class="flex items-start space-x-4">
-                        <span class="text-purple-400 font-black text-3xl">${objective.number}</span>
-                        <div>
-                            <h4 class="font-bold text-lg text-purple-300 mb-1">${objective.label}</h4>
-                            <p class="text-gray-300">${objective.text}</p>
-                        </div>
-                    </div>`;
-                        objectiveDetailsContainer.style.opacity = 1;
-                    }, 300);
+                            <div class="flex items-start space-x-4">
+                                <span class="text-purple-400 font-black text-3xl">${objective.number}</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-purple-300 mb-1">${objective.label}</h4>
+                                    <p class="text-gray-300">${objective.text}</p>
+                                </div>
+                            </div>`;
+                        objectiveDetailsContainer.style.opacity = 1; // Mostra com transição
+                    }, 300); // Tempo para a transição de opacidade
                 }
             }
             // ========================================================================
             // ## FIM DA LÓGICA DO GRÁFICO DE OBJETIVOS ##
             // ========================================================================
+
             // ========================================================================
             // ## INÍCIO DA LÓGICA DO GRÁFICO DE PRODUÇÃO ANUAL ##
             // ========================================================================
@@ -1489,23 +2164,24 @@
                 writer: filmographyDb.writer,
             };
 
-            const allWorksFlat = Object.entries(allWorks).flatMap(([role, works]) =>
-                works.map(work => ({
-                    ...work,
-                    role
-                }))
-            ).sort((a, b) => a.year - b.year);
-
+            const allWorksFlat = Object.entries(allWorks)
+                .flatMap(([role, works]) =>
+                    works.map((work) => ({
+                        ...work,
+                        role,
+                    }))
+                )
+                .sort((a, b) => a.year - b.year);
 
             function getYearlyData() {
                 const yearlyData = {};
-                allWorksFlat.forEach(work => {
+                allWorksFlat.forEach((work) => {
                     const year = work.year;
                     if (!yearlyData[year]) {
                         yearlyData[year] = {
                             director: 0,
                             producer: 0,
-                            writer: 0
+                            writer: 0,
                         };
                     }
                     if (yearlyData[year][work.role] !== undefined) {
@@ -1516,79 +2192,85 @@
             }
 
             function renderAnnualProductionChart() {
-                const ctx = document.getElementById('annualProductionChart').getContext('2d');
+                const ctx = document
+                    .getElementById("annualProductionChart")
+                    .getContext("2d");
                 if (!ctx) return;
 
                 const yearlyData = getYearlyData();
                 const years = Object.keys(yearlyData).sort();
 
                 const roleColors = {
-                    director: 'rgba(168, 85, 247, 0.8)', // Purple
-                    producer: 'rgba(250, 204, 21, 0.8)', // Yellow
-                    writer: 'rgba(249, 115, 22, 0.8)' // Orange
+                    director: "rgba(168, 85, 247, 0.8)", // Purple
+                    producer: "rgba(250, 204, 21, 0.8)", // Yellow
+                    writer: "rgba(249, 115, 22, 0.8)", // Orange
                 };
 
-                const datasets = [{
-                    label: 'Diretor',
-                    data: years.map(year => yearlyData[year]['director'] || 0),
-                    backgroundColor: roleColors.director
-                }, {
-                    label: 'Produtor',
-                    data: years.map(year => yearlyData[year]['producer'] || 0),
-                    backgroundColor: roleColors.producer
-                }, {
-                    label: 'Roteirista',
-                    data: years.map(year => yearlyData[year]['writer'] || 0),
-                    backgroundColor: roleColors.writer
-                },];
+                const datasets = [
+                    {
+                        label: "Diretor",
+                        data: years.map((year) => yearlyData[year]["director"] || 0),
+                        backgroundColor: roleColors.director,
+                    },
+                    {
+                        label: "Produtor",
+                        data: years.map((year) => yearlyData[year]["producer"] || 0),
+                        backgroundColor: roleColors.producer,
+                    },
+                    {
+                        label: "Roteirista",
+                        data: years.map((year) => yearlyData[year]["writer"] || 0),
+                        backgroundColor: roleColors.writer,
+                    },
+                ];
 
                 new Chart(ctx, {
-                    type: 'bar',
+                    type: "bar",
                     data: {
                         labels: years,
-                        datasets: datasets
+                        datasets: datasets,
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
                             legend: {
-                                position: 'top',
+                                position: "top",
                                 labels: {
-                                    color: '#e5e7eb',
+                                    color: "#e5e7eb",
                                     font: {
-                                        size: 14
-                                    }
-                                }
+                                        size: 14,
+                                    },
+                                },
                             },
                             tooltip: {
-                                mode: 'index',
-                                intersect: false
-                            }
+                                mode: "index",
+                                intersect: false,
+                            },
                         },
                         scales: {
                             x: {
                                 stacked: true,
                                 ticks: {
-                                    color: '#9ca3af'
+                                    color: "#9ca3af",
                                 },
                                 grid: {
-                                    color: 'rgba(107, 33, 168, 0.1)'
-                                }
+                                    color: "rgba(107, 33, 168, 0.1)",
+                                },
                             },
                             y: {
                                 stacked: true,
                                 beginAtZero: true,
                                 ticks: {
                                     stepSize: 1,
-                                    color: '#9ca3af'
+                                    color: "#9ca3af",
                                 },
                                 grid: {
-                                    color: 'rgba(107, 33, 168, 0.2)'
-                                }
-                            }
-                        }
-                    }
+                                    color: "rgba(107, 33, 168, 0.2)",
+                                },
+                            },
+                        },
+                    },
                 });
             }
 
@@ -1601,83 +2283,102 @@
             // ## INÍCIO DA LÓGICA DO GRÁFICO DE RADAR METODOLÓGICO ##
             // ========================================================================
             function renderMethodologyRadarChart() {
-                const ctx = document.getElementById('methodologyRadarChart').getContext('2d');
+                const ctx = document
+                    .getElementById("methodologyRadarChart")
+                    ?.getContext("2d");
                 if (!ctx) return;
-
-                const datasets = radarChartData.directors.map(dir => ({
+                const datasets = radarChartData.directors.map((dir) => ({
                     label: dir.name,
                     data: dir.data,
                     fill: true,
-                    backgroundColor: dir.color.replace('1)', '0.2)'),
+                    backgroundColor: dir.color.replace("1)", "0.2)"),
                     borderColor: dir.color,
                     pointBackgroundColor: dir.color,
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: dir.color
+                    pointBorderColor: "#fff",
+                    pointHoverBackgroundColor: "#fff",
+                    pointHoverBorderColor: dir.color,
                 }));
 
-                new Chart(ctx, {
-                    type: 'radar',
+                interactiveRadarChart = new Chart(ctx, {
+                    type: "radar",
                     data: {
                         labels: radarChartData.labels,
-                        datasets: datasets
+                        datasets: datasets,
                     },
                     options: {
+                        plugins: { legend: { display: false } },
                         responsive: true,
                         maintainAspectRatio: false,
                         scales: {
                             r: {
-                                angleLines: {
-                                    color: 'rgba(192, 132, 252, 0.2)'
-                                },
-                                grid: {
-                                    color: 'rgba(192, 132, 252, 0.2)'
-                                },
+                                angleLines: { color: "rgba(192, 132, 252, 0.2)" },
+                                grid: { color: "rgba(192, 132, 252, 0.2)" },
                                 pointLabels: {
-                                    font: {
-                                        size: 12,
-                                    },
-                                    color: '#e5e7eb'
+                                    font: { size: 12, weight: "600" },
+                                    color: "#e5e7eb",
                                 },
-                                ticks: {
-                                    backdropColor: 'transparent',
-                                    color: 'rgba(255, 255, 255, 0.7)',
-                                    stepSize: 2,
-                                    beginAtZero: true,
-                                    max: 10
-                                }
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                                labels: {
-                                    color: '#e5e7eb',
-                                    font: {
-                                        size: 14
-                                    }
-                                }
+                                ticks: { display: false, beginAtZero: true, max: 10 },
                             },
-                            tooltip: {
-                                callbacks: {
-                                    label: function (context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        if (context.parsed.r !== null) {
-                                            label += context.parsed.r;
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                        },
+                    },
                 });
             }
+            function createDirectorComparisonInterface() {
+                const container = document.getElementById("director-cards-container");
+                const titleEl = document.getElementById("director-analysis-title");
+                const textEl = document.getElementById("director-analysis-text");
 
+                if (!container) return;
+
+                container.innerHTML = radarChartData.directors
+                    .map(
+                        (dir) => `
+        <button data-director-id="${dir.id}" class="director-card text-left p-3 rounded-lg bg-purple-900/20 hover:bg-purple-900/40 border-2 border-transparent focus:border-purple-400 focus:outline-none transition-all w-full">
+            <h5 class="font-bold text-base text-white pointer-events-none">${dir.name}</h5>
+            <p class="text-xs text-purple-300 pointer-events-none">${dir.film}</p>
+        </button>
+    `
+                    )
+                    .join("");
+
+                container.addEventListener("click", function (e) {
+                    const card = e.target.closest(".director-card");
+                    if (card) {
+                        const directorId = card.dataset.directorId;
+                        const director = radarChartData.directors.find(
+                            (d) => d.id === directorId
+                        );
+
+                        document
+                            .querySelectorAll(".director-card")
+                            .forEach((c) =>
+                                c.classList.remove("bg-purple-600/50", "border-purple-400")
+                            );
+                        card.classList.add("bg-purple-600/50", "border-purple-400");
+
+                        titleEl.textContent = director.name;
+                        textEl.textContent = director.analysis;
+
+                        interactiveRadarChart.data.datasets.forEach((dataset, index) => {
+                            const dir = radarChartData.directors[index];
+                            if (dir.id === directorId) {
+                                dataset.backgroundColor = dir.color.replace("1)", "0.5)");
+                                dataset.borderColor = dir.color;
+                            } else {
+                                dataset.backgroundColor = "rgba(200, 200, 200, 0.05)";
+                                dataset.borderColor = "rgba(200, 200, 200, 0.2)";
+                            }
+                        });
+                        interactiveRadarChart.update();
+                    }
+                });
+
+                container
+                    .querySelector('.director-card[data-director-id="salles"]')
+                    .click();
+            }
             renderMethodologyRadarChart();
+            createDirectorComparisonInterface();
             // ========================================================================
             // ## FIM DA LÓGICA DO GRÁFICO DE RADAR ##
             // ========================================================================
@@ -1686,25 +2387,37 @@
             // ## INÍCIO DA LÓGICA DO GRÁFICO DE LINHA ##
             // ========================================================================
             function renderBoxOfficeChart() {
-                const ctx = document.getElementById('boxOfficeChart').getContext('2d');
+                const ctx = document
+                    .getElementById("boxOfficeChart")
+                    .getContext("2d");
                 if (!ctx) return;
 
                 new Chart(ctx, {
-                    type: 'line',
+                    type: "line",
                     data: {
-                        labels: ['Lançamento', 'Semana 2', 'Semana 3', 'Pós-Globo de Ouro', 'Semana 5', 'Pós-Indicação Oscar', 'Pós-Oscar'],
-                        datasets: [{
-                            label: 'Público Semanal (Aumento %)',
-                            data: [0, 15, 20, 122, 130, 245, 350],
-                            backgroundColor: 'rgba(168, 85, 247, 0.2)',
-                            borderColor: 'rgba(168, 85, 247, 1)',
-                            borderWidth: 3,
-                            pointBackgroundColor: 'rgba(168, 85, 247, 1)',
-                            pointRadius: 5,
-                            pointHoverRadius: 8,
-                            tension: 0.3,
-                            fill: true,
-                        }]
+                        labels: [
+                            "Lançamento",
+                            "Semana 2",
+                            "Semana 3",
+                            "Pós-Globo de Ouro",
+                            "Semana 5",
+                            "Pós-Indicação Oscar",
+                            "Pós-Oscar",
+                        ],
+                        datasets: [
+                            {
+                                label: "Público Semanal (Aumento %)",
+                                data: [0, 15, 20, 122, 130, 245, 350],
+                                backgroundColor: "rgba(168, 85, 247, 0.2)",
+                                borderColor: "rgba(168, 85, 247, 1)",
+                                borderWidth: 3,
+                                pointBackgroundColor: "rgba(168, 85, 247, 1)",
+                                pointRadius: 5,
+                                pointHoverRadius: 8,
+                                tension: 0.3,
+                                fill: true,
+                            },
+                        ],
                     },
                     options: {
                         responsive: true,
@@ -1714,48 +2427,58 @@
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Aumento Percentual do Público',
-                                    font: { size: 14, family: 'Inter' },
-                                    color: '#9ca3af'
+                                    text: "Aumento Percentual do Público",
+                                    font: { size: 14, family: "Inter" },
+                                    color: "#9ca3af",
                                 },
-                                ticks: { color: '#9ca3af' },
-                                grid: { color: 'rgba(107, 33, 168, 0.2)' }
+                                ticks: { color: "#9ca3af" },
+                                grid: { color: "rgba(107, 33, 168, 0.2)" },
                             },
                             x: {
-                                ticks: { color: '#9ca3af' },
-                                grid: { color: 'rgba(107, 33, 168, 0.1)' }
-                            }
+                                ticks: { color: "#9ca3af" },
+                                grid: { color: "rgba(107, 33, 168, 0.1)" },
+                            },
                         },
                         plugins: {
                             legend: { display: false },
                             tooltip: {
                                 callbacks: {
                                     label: function (context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) { label += ': '; }
-                                        if (context.parsed.y !== null) { label += context.parsed.y + '%'; }
-                                        let event = '';
+                                        let label = context.dataset.label || "";
+                                        if (label) {
+                                            label += ": ";
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y + "%";
+                                        }
+                                        let event = "";
                                         switch (context.dataIndex) {
-                                            case 3: event = 'Vitória no Globo de Ouro'; break;
-                                            case 5: event = 'Indicação ao Oscar'; break;
-                                            case 6: event = 'Vitória no Oscar'; break;
+                                            case 3:
+                                                event = "Vitória no Globo de Ouro";
+                                                break;
+                                            case 5:
+                                                event = "Indicação ao Oscar";
+                                                break;
+                                            case 6:
+                                                event = "Vitória no Oscar";
+                                                break;
                                         }
                                         return [label, event];
-                                    }
+                                    },
                                 },
-                                backgroundColor: '#1f2937',
-                                titleFont: { size: 14, weight: 'bold', family: 'Inter' },
-                                bodyFont: { size: 12, family: 'Inter' },
+                                backgroundColor: "#1f2937",
+                                titleFont: { size: 14, weight: "bold", family: "Inter" },
+                                bodyFont: { size: 12, family: "Inter" },
                                 padding: 10,
                                 cornerRadius: 4,
-                                displayColors: false
-                            }
+                                displayColors: false,
+                            },
                         },
                         interaction: {
                             intersect: false,
-                            mode: 'index',
-                        }
-                    }
+                            mode: "index",
+                        },
+                    },
                 });
             }
 
@@ -1764,6 +2487,47 @@
             // ## FIM DA LÓGICA DO GRÁFICO DE LINHA ##
             // ========================================================================
 
+            // ========================================================================
+            // ## INÍCIO DA LÓGICA PARA ARRASTAR O CARROSSEL COM O MOUSE ##
+            // ========================================================================
+            function makeCarouselDraggable(carouselSelector) {
+                const slider = document.querySelector(carouselSelector);
+                if (!slider) return;
+
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                slider.addEventListener("mousedown", (e) => {
+                    isDown = true;
+                    slider.classList.add("active");
+                    startX = e.pageX - slider.offsetLeft;
+                    scrollLeft = slider.scrollLeft;
+                });
+                slider.addEventListener("mouseleave", () => {
+                    isDown = false;
+                    slider.classList.remove("active");
+                });
+                slider.addEventListener("mouseup", () => {
+                    isDown = false;
+                    slider.classList.remove("active");
+                });
+                slider.addEventListener("mousemove", (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - slider.offsetLeft;
+                    const walk = (x - startX) * 2; // O multiplicador *2 acelera o arrasto
+                    slider.scrollLeft = scrollLeft - walk;
+                });
+            }
+
+            // Aplica a funcionalidade aos carrosséis desejados
+            makeCarouselDraggable("#theory-carousel");
+            makeCarouselDraggable("#film-corpus-container");
+            makeCarouselDraggable("#soundtrack-container");
+            // ========================================================================
+            // ## FIM DA LÓGICA PARA ARRASTAR O CARROSSEL ##
+            // ========================================================================
         });
     </script>
 </body>
